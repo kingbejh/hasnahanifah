@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Hasna</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: #faf8f5;
+    color: #2c2c2c;
+    line-height: 1.95;
+    font-size: 15px;
+  }
+
+  .print-btn {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #2c2c2c;
+    color: #f5f1e8;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 30px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    z-index: 999;
+  }
+
+  .print-btn:hover { background: #444; }
+
+  .page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 70px 55px;
+  }
+
+  /* COVER */
+  .cover {
+    text-align: center;
+    padding: 80px 0 65px;
+    border-bottom: 1px solid #d4c9b0;
+    margin-bottom: 65px;
+  }
+
+  .cover .label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10.5px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: #a8967a;
+    margin-bottom: 22px;
+  }
+
+  .cover h1 {
+    font-size: 27px;
+    font-weight: 600;
+    color: #2c2c2c;
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+
+  .cover .subtitle {
+    font-style: italic;
+    color: #7a6f5e;
+    font-size: 15.5px;
+    margin-bottom: 35px;
+  }
+
+  .cover .ornament {
+    color: #c8b89a;
+    font-size: 20px;
+    letter-spacing: 10px;
+  }
+
+  /* OPENING */
+  .opening {
+    margin-bottom: 58px;
+    padding: 30px 34px;
+    background: #f5f1e8;
+    border-left: 3px solid #c8b89a;
+    border-radius: 2px;
+  }
+
+  .opening p {
+    margin-bottom: 15px;
+    font-style: italic;
+    color: #4a4035;
+    line-height: 1.85;
+    font-size: 14.5px;
+  }
+
+  .opening p:last-child { margin-bottom: 0; }
+
+  /* SECTION */
+  .section { margin-bottom: 60px; }
+
+  .section-number {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #c8b89a;
+    margin-bottom: 6px;
+  }
+
+  .section h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+
+  .section-intro {
+    color: #6b6055;
+    font-style: italic;
+    margin-bottom: 26px;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+  /* AYAT BOX */
+  .ayat-box {
+    background: #eeeae0;
+    border: 1px solid #d8d0bc;
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 30px;
+  }
+
+  .ayat-box .translation {
+    font-size: 13.5px;
+    color: #5a5045;
+    font-style: italic;
+    line-height: 1.85;
+    margin-bottom: 8px;
+  }
+
+  .ayat-box .source {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    color: #a8967a;
+    letter-spacing: 1px;
+  }
+
+  /* ITEMS */
+  .items { list-style: none; padding: 0; }
+
+  .items li {
+    padding: 20px 0;
+    border-bottom: 1px solid #ece7dc;
+  }
+
+  .items li:last-child { border-bottom: none; }
+
+  .item-title {
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-bottom: 7px;
+    font-size: 15px;
+  }
+
+  .item-body {
+    color: #5a5045;
+    font-size: 14px;
+    line-height: 1.85;
+  }
+
+  .item-note {
+    font-size: 13px;
+    color: #a8967a;
+    font-style: italic;
+    margin-top: 7px;
+    line-height: 1.75;
+  }
+
+  /* COMMITMENT BOX */
+  .commitment-box {
+    background: #2c2c2c;
+    color: #f5f1e8;
+    padding: 44px;
+    border-radius: 5px;
+    margin-bottom: 60px;
+  }
+
+  .commitment-box h2 {
+    font-size: 19px;
+    color: #c8b89a;
+    margin-bottom: 22px;
+    line-height: 1.3;
+  }
+
+  .commitment-box p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: #cdc7bc;
+    margin-bottom: 15px;
+  }
+
+  .vow-list { list-style: none; padding: 0; margin: 22px 0; }
+
+  .vow-list li {
+    padding: 12px 0 12px 22px;
+    position: relative;
+    font-size: 14px;
+    color: #f0ede5;
+    border-bottom: 1px solid #3d3d3d;
+    line-height: 1.8;
+  }
+
+  .vow-list li:before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #c8b89a;
+  }
+
+  .vow-list li:last-child { border-bottom: none; }
+
+  .commitment-note {
+    font-style: italic;
+    color: #c8b89a !important;
+    margin-top: 10px;
+  }
+
+  /* CLOSING */
+  .closing {
+    text-align: center;
+    padding: 55px 30px 30px;
+    border-top: 1px solid #d4c9b0;
+  }
+
+  .closing-text {
+    font-style: italic;
+    color: #5a5045;
+    font-size: 14.5px;
+    line-height: 2.1;
+    margin-bottom: 35px;
+  }
+
+  .closing .signature {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 11px;
+    color: #a8967a;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  .closing .name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #2c2c2c;
+    margin-top: 6px;
+    font-style: italic;
+  }
+
+  /* PRINT */
+  @media print {
+    body { background: white; }
+    .print-btn { display: none; }
+    .page { padding: 40px 45px; }
+    .commitment-box,
+    .ayat-box,
+    .opening {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">Simpan sebagai PDF</button>
+
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="label">sebuah niat yang jujur</div>
+    <h1>Hak &amp; Kewajiban Suami dan Istri<br>dalam Islam</h1>
+    <div class="subtitle">versi yang aku tulis khusus untukmu, Hasna</div>
+    <div class="ornament">✦ ✦ ✦</div>
+  </div>
+
+  <!-- OPENING -->
+  <div class="opening">
+    <p>Untuk Hasna, perempuan yang insyaAllah akan menjadi pendamping hidupku.</p>
+    <p>Sebelum kita melangkah lebih jauh, aku ingin memberikan sesuatu yang jujur dan datang dari niat yang tulus. Bukan karena aku merasa lebih tahu. Dan bukan karena aku ingin menggurui. Tapi karena aku percaya bahwa dua orang yang mau menikah seharusnya duduk di meja yang sama sejak awal, melihat ke arah yang sama, dan memahami apa yang sedang mereka masuki bersama-sama.</p>
+    <p>Dokumen ini bukan daftar aturan, Hasna. Ini adalah cara aku mengajak kamu masuk ke percakapan yang paling penting sebelum kita menjadi satu.</p>
+  </div>
+
+  <!-- SECTION 1 -->
+  <div class="section">
+    <div class="section-number">bagian pertama</div>
+    <h2>Kewajiban Istri terhadap Suami</h2>
+    <p class="section-intro">Ini bukan daftar tuntutan. Ini adalah nilai-nilai yang membuat rumah tangga menjadi tempat yang tenang dan penuh rahmat, bukan medan perang yang melelahkan.</p>
+
+    <div class="ayat-box">
+      <div class="translation">"Wanita-wanita yang shalihah adalah mereka yang taat kepada Allah dan menjaga dirinya ketika suaminya tidak ada, karena Allah telah menjaga mereka."</div>
+      <div class="source">QS An-Nisa: 34</div>
+    </div>
+
+    <ul class="items">
+      <li>
+        <div class="item-title">Taat kepada suami dalam hal yang tidak melanggar syariat</div>
+        <div class="item-body">Taat bukan berarti tidak punya suara. Taat adalah bentuk kepercayaan, bukan kelemahan. Ketika kamu taat, bukan karena kamu tidak bisa berpikir sendiri, tapi karena kamu percaya bahwa orang yang kamu pilih layak dipercaya. Dan tugas suami adalah menjaga kepercayaan itu setiap harinya.</div>
+      </li>
+      <li>
+        <div class="item-title">Menjaga kehormatan diri dan rumah tangga</div>
+        <div class="item-body">Termasuk menjaga rahasia kita, menjaga nama baik kita di depan orang lain, dan menjaga batas-batas yang Allah tetapkan. Rumah tangga yang sehat dimulai dari dua orang yang menjaga satu sama lain, bukan dari dua orang yang saling membuka aib ke luar.</div>
+      </li>
+      <li>
+        <div class="item-title">Bersikap lembut dan menjaga komunikasi yang jujur</div>
+        <div class="item-body">Rumah tangga bukan tentang siapa yang menang argumen, tapi siapa yang paling mampu menjaga suasana tetap aman untuk bicara. Kalau ada yang mengganjal, katakan. Jangan simpan sampai menjadi jarak yang tidak terasa tapi nyata.</div>
+        <div class="item-note">Dan aku berjanji untuk mendengarkan, bukan langsung bereaksi.</div>
+      </li>
+      <li>
+        <div class="item-title">Mengurus rumah tangga sesuai kemampuan</div>
+        <div class="item-body">Tidak harus sempurna, tidak harus sendirian. Peran dalam rumah tangga kita tidak akan kaku dan tidak akan satu arah. Kalau aku bisa bantu, aku bantu. Yang penting kita tidak saling melempar beban, dan tidak saling diam membiarkan yang lain tenggelam sendirian.</div>
+      </li>
+      <li>
+        <div class="item-title">Memenuhi kebutuhan batin suami</div>
+        <div class="item-body">Hubungan suami dan istri dalam Islam adalah ibadah, bukan sekadar rutinitas. Ini tentang koneksi yang nyata antara dua orang yang setiap hari memilih untuk tetap memilih satu sama lain.</div>
+        <div class="item-note">Dan ini bukan hanya kewajibanmu. Ini juga hakmu. Aku akan kembali ke poin ini di bagian berikutnya.</div>
+      </li>
+      <li>
+        <div class="item-title">Menghargai usaha suami</div>
+        <div class="item-body">Bukan berarti diam saja melihat kekurangan. Tapi menyampaikannya dengan cara yang membangun, bukan dengan cara yang menjatuhkan. Suami yang merasa dihargai akan berusaha lebih keras. Suami yang terus merasa tidak pernah cukup, lama-lama berhenti mencoba.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="section">
+    <div class="section-number">bagian kedua</div>
+    <h2>Kewajiban Suami terhadap Istri</h2>
+    <p class="section-intro">Bagian ini adalah tanggung jawabku, Hasna. Aku tulis ini bukan untuk terlihat baik di depanmu, tapi supaya kamu tahu dengan jelas apa yang berhak kamu tuntut dariku.</p>
+
+    <div class="ayat-box">
+      <div class="translation">"Dan bergaullah dengan mereka secara patut. Kemudian bila kamu tidak menyukai mereka, maka bersabarlah, karena mungkin kamu tidak menyukai sesuatu, padahal Allah menjadikan padanya kebaikan yang banyak."</div>
+      <div class="source">QS An-Nisa: 19</div>
+    </div>
+
+    <ul class="items">
+      <li>
+        <div class="item-title">Memperlakukan istri dengan baik dan lembut</div>
+        <div class="item-body">Rasulullah SAW bersabda: "Sebaik-baik kalian adalah yang paling baik terhadap istrinya." (HR. Tirmidzi). Aku tidak mau menjadi suami yang baik di luar tapi kasar di dalam rumah. Perlakuan baikku terhadap kamu seharusnya bukan pertunjukan, tapi kebiasaan yang kamu rasakan setiap hari.</div>
+      </li>
+      <li>
+        <div class="item-title">Memberi nafkah dengan sungguh-sungguh</div>
+        <div class="item-body">Bukan soal berapa yang aku punya sekarang, tapi soal apakah aku serius menjaga amanah ini. Nafkah bukan tentang nominalnya, tapi tentang kesungguhannya. Aku akan berusaha sesuai kemampuan terbaikku, dan aku akan jujur ketika ada masa yang berat.</div>
+        <div class="item-note">Kejujuran di saat sulit lebih aku pilih daripada kepura-puraan di saat mudah.</div>
+      </li>
+      <li>
+        <div class="item-title">Tidak menyakiti dalam bentuk apa pun</div>
+        <div class="item-body">Tidak dengan tangan. Tidak dengan kata-kata yang tajam. Tidak dengan diam yang melukai. Tidak dengan sikap yang merendahkan, bahkan ketika aku sedang lelah atau marah. Ini adalah area yang aku sadari perlu aku jaga dengan sangat serius, dan aku tidak akan pura-pura sudah sempurna di bagian ini.</div>
+        <div class="item-note">Kamu berhak atas suami yang terus berusaha keras untuk tidak menyakitimu, bahkan di momen yang paling melelahkan sekalipun.</div>
+      </li>
+      <li>
+        <div class="item-title">Membimbing dalam agama</div>
+        <div class="item-body">Bukan berarti aku yang paling alim atau paling tahu segalanya. Tapi aku ingin kita belajar bersama, mengingatkan satu sama lain, dan berjalan ke arah yang sama dalam hal yang paling penting ini. Suami yang baik bukan yang selalu lebih tahu, tapi yang tidak mau jalannya berpisah dari istrinya di hadapan Allah.</div>
+      </li>
+      <li>
+        <div class="item-title">Memenuhi kebutuhan batin istri juga</div>
+        <div class="item-body">Ini hakmu, Hasna. Bukan hanya hal yang aku butuhkan. Kamu juga berhak untuk diprioritaskan, dicintai dengan sungguh-sungguh, dan diperlakukan bukan seperti kewajiban yang harus diselesaikan lalu dilupakan.</div>
+      </li>
+      <li>
+        <div class="item-title">Menjaga martabat dan kehormatan istri</div>
+        <div class="item-body">Kamu bukan milikku, Hasna. Kamu adalah amanah dari Allah yang harus aku jaga. Aku tidak akan merendahkanmu di depan orang lain. Aku tidak akan menjadikanmu bahan cerita. Kalau ada masalah antara kita, kita selesaikan berdua, bukan masing-masing cari pihak ketiga.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- COMMITMENT BOX -->
+  <div class="commitment-box">
+    <h2>Hal yang Ingin Aku Sampaikan Secara Jujur</h2>
+
+    <p>Hasna, sebelum aku bicara soal janji, aku ingin bicara soal sesuatu yang lebih berat dari janji itu sendiri: kekuranganku.</p>
+
+    <p>Kamu pernah mengungkapkan kekhawatiranmu soal temperamenku. Dan aku mendengarnya, bukan sebagai serangan yang perlu aku tangkis, tapi sebagai sesuatu yang benar-benar perlu aku kerjakan. Orang yang tidak mau mengakui kekurangannya sendiri tidak siap untuk membangun rumah tangga yang sehat.</p>
+
+    <p>Jadi ini yang ingin aku komitmenkan, dengan sadar dan sungguh-sungguh:</p>
+
+    <ul class="vow-list">
+      <li>Aku akan mendengarkan kamu sebelum bereaksi, bahkan di momen yang paling memicuku sekalipun.</li>
+      <li>Aku akan belajar mengatur emosi. Bukan menahan sampai meledak, tapi memproses dengan cara yang tidak merusak.</li>
+      <li>Kalau aku salah, aku akan mengakuinya. Tidak ada ego yang lebih penting dari keberlangsungan rumah tangga kita.</li>
+      <li>Aku akan menjadi sosok yang aman untuk Hazela dan untuk kamu. Karena rumah yang aku bangun harus menjadi tempat yang paling aman untuk kalian pulang.</li>
+      <li>Aku tidak berjanji sempurna. Tapi aku berjanji untuk tidak berhenti mencoba menjadi lebih baik.</li>
+    </ul>
+
+    <p class="commitment-note">Jika nanti aku jatuh dari janji-janji ini, aku minta kamu ingatkan aku. Bukan dengan diam, dan bukan dengan cara yang menyakitkan. Tapi dengan cara yang membuat kita tetap bisa berjalan bersama.</p>
+  </div>
+
+  <!-- CLOSING -->
+  <div class="closing">
+    <div class="ayat-box" style="text-align:left; margin-bottom: 44px;">
+      <div class="translation">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang."</div>
+      <div class="source">QS Ar-Rum: 21</div>
+    </div>
+
+    <div class="closing-text">
+      Hasna,<br><br>
+      Rumah tangga dalam Islam bukan tentang siapa yang lebih tinggi,<br>
+      siapa yang lebih bisa, atau siapa yang paling benar.<br><br>
+      Ini tentang dua orang yang memilih untuk tumbuh bersama,<br>
+      sabar bersama, dan pulang kepada Allah bersama.<br><br>
+      Aku tidak menjanjikan hidup tanpa masalah.<br>
+      Tapi aku berjanji untuk tidak pergi ketika masalah itu datang.<br><br>
+      Semoga Allah meridhai niat kita, dan menjadikan pernikahan kita<br>
+      sebagai salah satu kebaikan yang kita bawa pulang.
+    </div>
+
+    <div class="signature">dengan niat yang jujur,</div>
+    <div class="name">Daffa</div>
+  </div>
+
+</div>
+</body>
+</html>
