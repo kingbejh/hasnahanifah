@@ -3,392 +3,624 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Untuk Hasna</title>
+<meta name="description" content="Daffa & Hasna Hanifah — Perjalanan menuju satu.">
+<title>Daffa & Hasna Hanifah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Source+Sans+3:wght@300;400;600&display=swap');
+:root {
+  --bg:      #09080c;
+  --bg2:     #100e0b;
+  --bg3:     #1c1916;
+  --bg4:     #242018;
+  --gold:    #c8a45a;
+  --gold-lt: #e2c88a;
+  --gold-pl: #f0e6c8;
+  --text:    #cec9bf;
+  --dim:     #7a7570;
+  --border:  rgba(200,164,90,0.18);
+  --border2: rgba(200,164,90,0.42);
+}
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-  body {
-    font-family: 'Lora', Georgia, serif;
-    background: #faf8f5;
-    color: #2c2c2c;
-    line-height: 1.95;
-    font-size: 15px;
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  font-size: 15px;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
+
+/* ========== NAV ========== */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.4s, backdrop-filter 0.4s;
+}
+nav.scrolled {
+  background: rgba(9,8,12,0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 17px; font-style: italic;
+  color: var(--gold-lt); letter-spacing: 0.5px;
+}
+.nav-links {
+  display: flex; gap: 26px; list-style: none;
+}
+.nav-links a {
+  font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--dim); text-decoration: none; transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold-lt); }
+.nav-toggle {
+  display: none; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 4px; z-index: 101;
+}
+.nav-toggle span {
+  width: 22px; height: 1px; background: var(--gold); display: block; transition: 0.3s;
+}
+@media (max-width: 640px) {
+  .nav-links {
+    display: none; position: fixed;
+    inset: 0; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 38px; background: rgba(9,8,12,0.97); z-index: 99;
   }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 13px; letter-spacing: 3px; }
+  .nav-toggle { display: flex; }
+}
 
-  .print-btn {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: #2c2c2c;
-    color: #f5f1e8;
-    border: none;
-    padding: 12px 22px;
-    border-radius: 30px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 13px;
-    letter-spacing: 1px;
-    cursor: pointer;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-    z-index: 999;
-  }
+/* ========== HERO ========== */
+#hero {
+  position: relative; height: 100vh; min-height: 600px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+  max-width: 100%; padding: 0;
+}
+#stars-canvas { position: absolute; inset: 0; z-index: 0; }
+.hero-content { position: relative; z-index: 1; padding: 20px; }
 
-  .print-btn:hover { background: #444; }
+.hero-eyebrow {
+  font-size: 15px; color: var(--gold); margin-bottom: 22px;
+  opacity: 0; animation: fadeUp 1s 0.3s forwards; display: block;
+}
+.hero-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 13vw, 92px); font-weight: 300;
+  line-height: 1.0; color: var(--gold-pl); margin-bottom: 12px;
+  opacity: 0; animation: fadeUp 1s 0.6s forwards;
+}
+.hero-names .amp { font-style: italic; color: var(--gold); }
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 18px; color: var(--dim); margin-bottom: 50px;
+  opacity: 0; animation: fadeUp 1s 0.9s forwards;
+}
+.countdown-label {
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--dim); margin-bottom: 16px;
+  opacity: 0; animation: fadeUp 1s 1.1s forwards; display: block;
+}
+.countdown {
+  display: flex; gap: 16px; justify-content: center; align-items: flex-start;
+  opacity: 0; animation: fadeUp 1s 1.3s forwards;
+}
+.countdown-item { text-align: center; }
+.countdown-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(38px, 9vw, 60px); font-weight: 300;
+  color: var(--gold-lt); line-height: 1; display: block;
+}
+.countdown-unit {
+  font-size: 8.5px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--dim); margin-top: 5px;
+}
+.countdown-sep {
+  font-size: 36px; color: var(--border2);
+  padding-top: 2px; line-height: 1;
+}
+.scroll-line {
+  position: absolute; bottom: 32px; left: 50%;
+  transform: translateX(-50%); z-index: 1;
+  opacity: 0; animation: fadeIn 1s 2.2s forwards;
+}
+.scroll-line::after {
+  content: ''; display: block; width: 1px; height: 52px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  margin: 0 auto; animation: pulse 2s infinite;
+}
 
-  .page {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 70px 55px;
-  }
+/* ========== SECTIONS ========== */
+.sec {
+  padding: 100px 24px; max-width: 780px; margin: 0 auto;
+}
+.sec-wide { max-width: 900px; }
+.sec-mid  { max-width: 680px; }
+.sec-narrow { max-width: 620px; }
 
-  /* COVER */
-  .cover {
-    text-align: center;
-    padding: 80px 0 65px;
-    border-bottom: 1px solid #d4c9b0;
-    margin-bottom: 65px;
-  }
+.eyebrow {
+  font-size: 9.5px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px; display: block;
+}
+.sec-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 6vw, 42px); font-weight: 400;
+  color: var(--gold-pl); line-height: 1.2; margin-bottom: 12px;
+}
+.sec-title em { font-style: italic; color: var(--gold-lt); }
+.sec-intro {
+  font-size: 14px; color: var(--dim); font-style: italic;
+  margin-bottom: 36px; line-height: 1.8;
+}
+.divider {
+  width: 52px; height: 1px;
+  background: var(--border2); margin: 14px 0 38px;
+}
+.ornament {
+  display: block; text-align: center; color: var(--gold);
+  letter-spacing: 12px; font-size: 13px;
+  margin: 0 auto; padding: 60px 0; opacity: 0.45;
+  max-width: 780px;
+}
 
-  .cover .label {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 10.5px;
-    letter-spacing: 3.5px;
-    text-transform: uppercase;
-    color: #a8967a;
-    margin-bottom: 22px;
-  }
+/* ========== SURAT ========== */
+.surat-opening {
+  padding: 26px 30px; border: 1px solid var(--border);
+  border-radius: 3px; background: var(--bg3);
+  margin-bottom: 46px; font-style: italic;
+  color: var(--text); font-size: 14px; line-height: 1.9;
+}
+.surat-opening p { margin-bottom: 14px; }
+.surat-opening p:last-child { margin-bottom: 0; }
 
-  .cover h1 {
-    font-size: 27px;
-    font-weight: 600;
-    color: #2c2c2c;
-    line-height: 1.35;
-    margin-bottom: 10px;
-  }
+.part-label {
+  font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 6px; display: block;
+}
+.part-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; color: var(--gold-pl); margin-bottom: 8px;
+}
+.part-intro {
+  font-size: 13.5px; font-style: italic;
+  color: var(--dim); margin-bottom: 24px;
+}
 
-  .cover .subtitle {
-    font-style: italic;
-    color: #7a6f5e;
-    font-size: 15.5px;
-    margin-bottom: 35px;
-  }
+.ayat {
+  background: var(--bg4); border: 1px solid var(--border);
+  border-left: 2px solid var(--gold);
+  padding: 18px 22px; margin-bottom: 28px; border-radius: 2px;
+}
+.ayat .tr {
+  font-size: 13.5px; color: var(--text);
+  font-style: italic; line-height: 1.85; margin-bottom: 6px;
+}
+.ayat .src {
+  font-size: 11px; color: var(--gold); letter-spacing: 1px;
+}
 
-  .cover .ornament {
-    color: #c8b89a;
-    font-size: 20px;
-    letter-spacing: 10px;
-  }
+.items { list-style: none; }
+.items li {
+  padding: 20px 0; border-bottom: 1px solid rgba(200,164,90,0.1);
+}
+.items li:last-child { border-bottom: none; }
+.i-title {
+  font-weight: 500; color: var(--gold-pl);
+  margin-bottom: 7px; font-size: 14.5px;
+}
+.i-body {
+  font-size: 13.5px; color: var(--text); line-height: 1.85;
+}
+.i-note {
+  font-size: 12.5px; color: var(--gold);
+  font-style: italic; margin-top: 6px;
+}
 
-  /* OPENING */
-  .opening {
-    margin-bottom: 58px;
-    padding: 30px 34px;
-    background: #f5f1e8;
-    border-left: 3px solid #c8b89a;
-    border-radius: 2px;
-  }
+.commit-box {
+  background: var(--bg3);
+  border: 1px solid var(--border2);
+  border-top: 2px solid var(--gold);
+  padding: 34px 38px; border-radius: 3px; margin: 46px 0;
+}
+.commit-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; color: var(--gold-lt); margin-bottom: 16px;
+}
+.commit-box p {
+  font-size: 13.5px; line-height: 1.9;
+  color: var(--text); margin-bottom: 13px;
+}
+.vow-list { list-style: none; margin: 18px 0; }
+.vow-list li {
+  padding: 10px 0 10px 20px; position: relative;
+  font-size: 13.5px; color: var(--text);
+  border-bottom: 1px solid rgba(200,164,90,0.08);
+  line-height: 1.8;
+}
+.vow-list li::before {
+  content: '—'; position: absolute; left: 0; color: var(--gold);
+}
+.vow-list li:last-child { border-bottom: none; }
+.commit-note { font-style: italic; color: var(--gold) !important; }
 
-  .opening p {
-    margin-bottom: 15px;
-    font-style: italic;
-    color: #4a4035;
-    line-height: 1.85;
-    font-size: 14.5px;
-  }
+.surat-close { text-align: center; padding: 36px 16px 0; }
+.close-text {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 17px; color: var(--text); line-height: 2.1; margin-bottom: 28px;
+}
+.sig-label {
+  font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim);
+}
+.sig-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; font-style: italic; color: var(--gold-lt); margin-top: 4px;
+}
 
-  .opening p:last-child { margin-bottom: 0; }
+/* ========== TIMELINE ========== */
+.timeline { position: relative; padding-left: 30px; }
+.timeline::before {
+  content: ''; position: absolute; left: 6px; top: 10px; bottom: 0;
+  width: 1px; background: linear-gradient(to bottom, var(--gold), transparent);
+}
+.tl-item { position: relative; margin-bottom: 44px; }
+.tl-item:last-child { margin-bottom: 0; }
+.tl-dot {
+  position: absolute; left: -30px; top: 5px;
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 1px solid var(--gold); background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+}
+.tl-dot::after {
+  content: ''; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--gold);
+}
+.tl-date {
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 5px;
+}
+.tl-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px; color: var(--gold-pl); margin-bottom: 7px;
+}
+.tl-body { font-size: 13.5px; color: var(--text); line-height: 1.85; }
 
-  /* SECTION */
-  .section { margin-bottom: 60px; }
+/* ========== ACARA ========== */
+.acara-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
+}
+@media (max-width: 560px) { .acara-grid { grid-template-columns: 1fr; } }
+.acara-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-top: 2px solid var(--gold); border-radius: 3px; padding: 30px 26px;
+}
+.acara-card.tbd { border-top-color: var(--dim); opacity: 0.6; }
+.acara-tag {
+  font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 10px; display: block;
+}
+.acara-card.tbd .acara-tag { color: var(--dim); }
+.acara-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px; color: var(--gold-pl); margin-bottom: 20px;
+}
+.acara-rows { display: flex; flex-direction: column; gap: 12px; }
+.acara-row { display: flex; gap: 12px; align-items: flex-start; }
+.acara-icon { font-size: 11px; color: var(--gold); margin-top: 3px; flex-shrink: 0; }
+.acara-info { font-size: 13.5px; color: var(--text); line-height: 1.7; }
+.acara-info strong {
+  color: var(--gold-pl); display: block; font-size: 11px;
+  letter-spacing: 0.5px; margin-bottom: 2px; font-weight: 500;
+}
+.maps-btn {
+  display: inline-block; margin-top: 18px; padding: 9px 18px;
+  border: 1px solid var(--border2); border-radius: 2px;
+  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); text-decoration: none; transition: background 0.3s, color 0.3s;
+}
+.maps-btn:hover { background: var(--gold); color: var(--bg); }
 
-  .section-number {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: #c8b89a;
-    margin-bottom: 6px;
-  }
+/* ========== GALERI ========== */
+.galeri-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+}
+@media (max-width: 480px) { .galeri-grid { grid-template-columns: repeat(2, 1fr); } }
+.galeri-item {
+  aspect-ratio: 1; overflow: hidden;
+  border-radius: 2px; cursor: pointer;
+}
+.galeri-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; transition: transform 0.6s ease;
+}
+.galeri-item:hover img { transform: scale(1.05); }
+.galeri-ph {
+  width: 100%; height: 100%;
+  background: var(--bg3); border: 1px dashed var(--border2);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 7px;
+}
+.galeri-ph span { font-size: 18px; color: var(--border2); }
+.galeri-ph p { font-size: 9.5px; color: var(--dim); letter-spacing: 1px; }
 
-  .section h2 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #2c2c2c;
-    margin-bottom: 8px;
-    line-height: 1.3;
-  }
+.lightbox {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.96); z-index: 200;
+  align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+.lb-close {
+  position: absolute; top: 20px; right: 24px;
+  background: none; border: none; color: var(--gold-pl);
+  font-size: 22px; cursor: pointer;
+}
 
-  .section-intro {
-    color: #6b6055;
-    font-style: italic;
-    margin-bottom: 26px;
-    font-size: 14px;
-    line-height: 1.75;
-  }
+/* ========== FORM (RSVP + TAMU) ========== */
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--dim); margin-bottom: 8px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 2px; padding: 12px 15px;
+  color: var(--text); font-family: 'Inter', sans-serif;
+  font-size: 14px; outline: none; transition: border-color 0.3s;
+  -webkit-appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group textarea { height: 110px; resize: vertical; }
+.form-group select option { background: var(--bg3); }
 
-  /* AYAT BOX */
-  .ayat-box {
-    background: #eeeae0;
-    border: 1px solid #d8d0bc;
-    border-radius: 4px;
-    padding: 20px 24px;
-    margin-bottom: 30px;
-  }
+.submit-btn {
+  width: 100%; padding: 14px; background: transparent;
+  border: 1px solid var(--gold); color: var(--gold);
+  font-family: 'Inter', sans-serif; font-size: 10.5px;
+  letter-spacing: 3px; text-transform: uppercase;
+  cursor: pointer; border-radius: 2px;
+  transition: background 0.3s, color 0.3s; margin-top: 6px;
+}
+.submit-btn:hover { background: var(--gold); color: var(--bg); }
+.submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
 
-  .ayat-box .translation {
-    font-size: 13.5px;
-    color: #5a5045;
-    font-style: italic;
-    line-height: 1.85;
-    margin-bottom: 8px;
-  }
+.wish-form {
+  background: var(--bg3); border: 1px solid var(--border);
+  padding: 30px; border-radius: 3px; margin-bottom: 40px;
+}
+#wishes-list { display: grid; gap: 13px; }
+.wish-card {
+  background: var(--bg3); border: 1px solid var(--border);
+  border-left: 2px solid var(--gold); padding: 18px 20px; border-radius: 3px;
+}
+.wish-name {
+  font-size: 13px; font-weight: 500; color: var(--gold-lt); margin-bottom: 6px;
+}
+.wish-msg {
+  font-size: 13.5px; color: var(--text); line-height: 1.8; font-style: italic;
+}
+.no-wishes {
+  font-size: 13px; color: var(--dim); font-style: italic;
+  text-align: center; padding: 24px 0;
+}
 
-  .ayat-box .source {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 11px;
-    color: #a8967a;
-    letter-spacing: 1px;
-  }
+/* ========== FOOTER ========== */
+footer {
+  text-align: center; padding: 60px 20px 44px;
+  border-top: 1px solid var(--border);
+  max-width: 780px; margin: 0 auto;
+}
+.footer-names {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-style: italic; color: var(--gold-lt); margin-bottom: 8px;
+}
+.footer-ayat {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: 15px; color: var(--dim); margin-bottom: 22px; line-height: 1.7;
+}
+.footer-doa { font-size: 12px; color: var(--dim); letter-spacing: 1.5px; }
 
-  /* ITEMS */
-  .items { list-style: none; padding: 0; }
+/* ========== TOAST ========== */
+.toast {
+  position: fixed; bottom: 28px; left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--bg3); border: 1px solid var(--border2);
+  color: var(--gold-pl); padding: 12px 24px; border-radius: 2px;
+  font-size: 13px; opacity: 0; transition: opacity 0.4s, transform 0.4s;
+  z-index: 300; text-align: center; max-width: 320px; width: 90%;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-  .items li {
-    padding: 20px 0;
-    border-bottom: 1px solid #ece7dc;
-  }
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes pulse {
+  0%,100% { opacity: 0.25; } 50% { opacity: 1; }
+}
 
-  .items li:last-child { border-bottom: none; }
-
-  .item-title {
-    font-weight: 600;
-    color: #2c2c2c;
-    margin-bottom: 7px;
-    font-size: 15px;
-  }
-
-  .item-body {
-    color: #5a5045;
-    font-size: 14px;
-    line-height: 1.85;
-  }
-
-  .item-note {
-    font-size: 13px;
-    color: #a8967a;
-    font-style: italic;
-    margin-top: 7px;
-    line-height: 1.75;
-  }
-
-  /* COMMITMENT BOX */
-  .commitment-box {
-    background: #2c2c2c;
-    color: #f5f1e8;
-    padding: 44px;
-    border-radius: 5px;
-    margin-bottom: 60px;
-  }
-
-  .commitment-box h2 {
-    font-size: 19px;
-    color: #c8b89a;
-    margin-bottom: 22px;
-    line-height: 1.3;
-  }
-
-  .commitment-box p {
-    font-size: 14px;
-    line-height: 1.9;
-    color: #cdc7bc;
-    margin-bottom: 15px;
-  }
-
-  .vow-list { list-style: none; padding: 0; margin: 22px 0; }
-
-  .vow-list li {
-    padding: 12px 0 12px 22px;
-    position: relative;
-    font-size: 14px;
-    color: #f0ede5;
-    border-bottom: 1px solid #3d3d3d;
-    line-height: 1.8;
-  }
-
-  .vow-list li:before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: #c8b89a;
-  }
-
-  .vow-list li:last-child { border-bottom: none; }
-
-  .commitment-note {
-    font-style: italic;
-    color: #c8b89a !important;
-    margin-top: 10px;
-  }
-
-  /* CLOSING */
-  .closing {
-    text-align: center;
-    padding: 55px 30px 30px;
-    border-top: 1px solid #d4c9b0;
-  }
-
-  .closing-text {
-    font-style: italic;
-    color: #5a5045;
-    font-size: 14.5px;
-    line-height: 2.1;
-    margin-bottom: 35px;
-  }
-
-  .closing .signature {
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 11px;
-    color: #a8967a;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-
-  .closing .name {
-    font-size: 22px;
-    font-weight: 600;
-    color: #2c2c2c;
-    margin-top: 6px;
-    font-style: italic;
-  }
-
-  /* PRINT */
-  @media print {
-    body { background: white; }
-    .print-btn { display: none; }
-    .page { padding: 40px 45px; }
-    .commitment-box,
-    .ayat-box,
-    .opening {
-      -webkit-print-color-adjust: exact;
-      print-color-adjust: exact;
-    }
-  }
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
-<button class="print-btn" onclick="window.print()">Simpan sebagai PDF</button>
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-brand">Daffa &amp; Hasna</div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#hero"  onclick="closeNav()">Beranda</a></li>
+    <li><a href="#surat" onclick="closeNav()">Surat</a></li>
+    <li><a href="#cerita" onclick="closeNav()">Cerita</a></li>
+    <li><a href="#acara" onclick="closeNav()">Acara</a></li>
+    <li><a href="#galeri" onclick="closeNav()">Galeri</a></li>
+    <li><a href="#rsvp"  onclick="closeNav()">RSVP</a></li>
+    <li><a href="#tamu"  onclick="closeNav()">Doa &amp; Ucapan</a></li>
+  </ul>
+</nav>
 
-<div class="page">
-
-  <!-- COVER -->
-  <div class="cover">
-    <div class="label">sebuah niat yang jujur</div>
-    <h1>Hak &amp; Kewajiban Suami dan Istri<br>dalam Islam</h1>
-    <div class="subtitle">versi yang aku tulis khusus untukmu, Hasna</div>
-    <div class="ornament">✦ ✦ ✦</div>
+<!-- ========== HERO ========== -->
+<div id="hero">
+  <canvas id="stars-canvas"></canvas>
+  <div class="hero-content">
+    <span class="hero-eyebrow">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</span>
+    <h1 class="hero-names">
+      Daffa<br>
+      <span class="amp">&amp;</span><br>
+      Hasna Hanifah
+    </h1>
+    <p class="hero-tagline">Perjalanan menuju satu</p>
+    <span class="countdown-label">Menuju hari lamaran</span>
+    <div class="countdown" id="countdown">
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-d">--</span>
+        <div class="countdown-unit">Hari</div>
+      </div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-h">--</span>
+        <div class="countdown-unit">Jam</div>
+      </div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-m">--</span>
+        <div class="countdown-unit">Menit</div>
+      </div>
+      <div class="countdown-sep">·</div>
+      <div class="countdown-item">
+        <span class="countdown-num" id="cd-s">--</span>
+        <div class="countdown-unit">Detik</div>
+      </div>
+    </div>
   </div>
+  <div class="scroll-line"></div>
+</div>
 
-  <!-- OPENING -->
-  <div class="opening">
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ========== SURAT ========== -->
+<div class="sec" id="surat">
+  <span class="eyebrow reveal">sebuah niat yang jujur</span>
+  <h2 class="sec-title reveal">Hak &amp; Kewajiban<br><em>Suami dan Istri dalam Islam</em></h2>
+  <p class="sec-intro reveal">versi yang aku tulis khusus untukmu, Hasna</p>
+
+  <div class="surat-opening reveal">
     <p>Untuk Hasna, perempuan yang insyaAllah akan menjadi pendamping hidupku.</p>
     <p>Sebelum kita melangkah lebih jauh, aku ingin memberikan sesuatu yang jujur dan datang dari niat yang tulus. Bukan karena aku merasa lebih tahu. Dan bukan karena aku ingin menggurui. Tapi karena aku percaya bahwa dua orang yang mau menikah seharusnya duduk di meja yang sama sejak awal, melihat ke arah yang sama, dan memahami apa yang sedang mereka masuki bersama-sama.</p>
     <p>Dokumen ini bukan daftar aturan, Hasna. Ini adalah cara aku mengajak kamu masuk ke percakapan yang paling penting sebelum kita menjadi satu.</p>
   </div>
 
-  <!-- SECTION 1 -->
-  <div class="section">
-    <div class="section-number">bagian pertama</div>
-    <h2>Kewajiban Istri terhadap Suami</h2>
-    <p class="section-intro">Ini bukan daftar tuntutan. Ini adalah nilai-nilai yang membuat rumah tangga menjadi tempat yang tenang dan penuh rahmat, bukan medan perang yang melelahkan.</p>
+  <span class="part-label reveal">bagian pertama</span>
+  <h3 class="part-title reveal">Kewajiban Istri terhadap Suami</h3>
+  <p class="part-intro reveal">Ini bukan daftar tuntutan. Ini adalah nilai-nilai yang membuat rumah tangga menjadi tempat yang tenang dan penuh rahmat, bukan medan perang yang melelahkan.</p>
 
-    <div class="ayat-box">
-      <div class="translation">"Wanita-wanita yang shalihah adalah mereka yang taat kepada Allah dan menjaga dirinya ketika suaminya tidak ada, karena Allah telah menjaga mereka."</div>
-      <div class="source">QS An-Nisa: 34</div>
-    </div>
-
-    <ul class="items">
-      <li>
-        <div class="item-title">Taat kepada suami dalam hal yang tidak melanggar syariat</div>
-        <div class="item-body">Taat bukan berarti tidak punya suara. Taat adalah bentuk kepercayaan, bukan kelemahan. Ketika kamu taat, bukan karena kamu tidak bisa berpikir sendiri, tapi karena kamu percaya bahwa orang yang kamu pilih layak dipercaya. Dan tugas suami adalah menjaga kepercayaan itu setiap harinya.</div>
-      </li>
-      <li>
-        <div class="item-title">Menjaga kehormatan diri dan rumah tangga</div>
-        <div class="item-body">Termasuk menjaga rahasia kita, menjaga nama baik kita di depan orang lain, dan menjaga batas-batas yang Allah tetapkan. Rumah tangga yang sehat dimulai dari dua orang yang menjaga satu sama lain, bukan dari dua orang yang saling membuka aib ke luar.</div>
-      </li>
-      <li>
-        <div class="item-title">Bersikap lembut dan menjaga komunikasi yang jujur</div>
-        <div class="item-body">Rumah tangga bukan tentang siapa yang menang argumen, tapi siapa yang paling mampu menjaga suasana tetap aman untuk bicara. Kalau ada yang mengganjal, katakan. Jangan simpan sampai menjadi jarak yang tidak terasa tapi nyata.</div>
-        <div class="item-note">Dan aku berjanji untuk mendengarkan, bukan langsung bereaksi.</div>
-      </li>
-      <li>
-        <div class="item-title">Mengurus rumah tangga sesuai kemampuan</div>
-        <div class="item-body">Tidak harus sempurna, tidak harus sendirian. Peran dalam rumah tangga kita tidak akan kaku dan tidak akan satu arah. Kalau aku bisa bantu, aku bantu. Yang penting kita tidak saling melempar beban, dan tidak saling diam membiarkan yang lain tenggelam sendirian.</div>
-      </li>
-      <li>
-        <div class="item-title">Memenuhi kebutuhan batin suami</div>
-        <div class="item-body">Hubungan suami dan istri dalam Islam adalah ibadah, bukan sekadar rutinitas. Ini tentang koneksi yang nyata antara dua orang yang setiap hari memilih untuk tetap memilih satu sama lain.</div>
-        <div class="item-note">Dan ini bukan hanya kewajibanmu. Ini juga hakmu. Aku akan kembali ke poin ini di bagian berikutnya.</div>
-      </li>
-      <li>
-        <div class="item-title">Menghargai usaha suami</div>
-        <div class="item-body">Bukan berarti diam saja melihat kekurangan. Tapi menyampaikannya dengan cara yang membangun, bukan dengan cara yang menjatuhkan. Suami yang merasa dihargai akan berusaha lebih keras. Suami yang terus merasa tidak pernah cukup, lama-lama berhenti mencoba.</div>
-      </li>
-    </ul>
+  <div class="ayat reveal">
+    <p class="tr">"Wanita-wanita yang shalihah adalah mereka yang taat kepada Allah dan menjaga dirinya ketika suaminya tidak ada, karena Allah telah menjaga mereka."</p>
+    <span class="src">QS An-Nisa: 34</span>
   </div>
 
-  <!-- SECTION 2 -->
-  <div class="section">
-    <div class="section-number">bagian kedua</div>
-    <h2>Kewajiban Suami terhadap Istri</h2>
-    <p class="section-intro">Bagian ini adalah tanggung jawabku, Hasna. Aku tulis ini bukan untuk terlihat baik di depanmu, tapi supaya kamu tahu dengan jelas apa yang berhak kamu tuntut dariku.</p>
+  <ul class="items">
+    <li class="reveal">
+      <div class="i-title">Taat kepada suami dalam hal yang tidak melanggar syariat</div>
+      <div class="i-body">Taat bukan berarti tidak punya suara. Taat adalah bentuk kepercayaan, bukan kelemahan. Ketika kamu taat, bukan karena kamu tidak bisa berpikir sendiri, tapi karena kamu percaya bahwa orang yang kamu pilih layak dipercaya. Dan tugas suami adalah menjaga kepercayaan itu setiap harinya.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Menjaga kehormatan diri dan rumah tangga</div>
+      <div class="i-body">Termasuk menjaga rahasia kita, menjaga nama baik kita di depan orang lain, dan menjaga batas-batas yang Allah tetapkan. Rumah tangga yang sehat dimulai dari dua orang yang menjaga satu sama lain, bukan dari dua orang yang saling membuka aib ke luar.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Bersikap lembut dan menjaga komunikasi yang jujur</div>
+      <div class="i-body">Rumah tangga bukan tentang siapa yang menang argumen, tapi siapa yang paling mampu menjaga suasana tetap aman untuk bicara. Kalau ada yang mengganjal, katakan. Jangan simpan sampai menjadi jarak yang tidak terasa tapi nyata.</div>
+      <div class="i-note">Dan aku berjanji untuk mendengarkan, bukan langsung bereaksi.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Mengurus rumah tangga sesuai kemampuan</div>
+      <div class="i-body">Tidak harus sempurna, tidak harus sendirian. Peran dalam rumah tangga kita tidak akan kaku dan tidak akan satu arah. Kalau aku bisa bantu, aku bantu. Yang penting kita tidak saling melempar beban, dan tidak saling diam membiarkan yang lain tenggelam sendirian.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Memenuhi kebutuhan batin suami</div>
+      <div class="i-body">Hubungan suami dan istri dalam Islam adalah ibadah, bukan sekadar rutinitas. Ini tentang koneksi yang nyata antara dua orang yang setiap hari memilih untuk tetap memilih satu sama lain.</div>
+      <div class="i-note">Dan ini bukan hanya kewajibanmu. Ini juga hakmu. Aku akan kembali ke poin ini di bagian berikutnya.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Menghargai usaha suami</div>
+      <div class="i-body">Bukan berarti diam saja melihat kekurangan. Tapi menyampaikannya dengan cara yang membangun, bukan dengan cara yang menjatuhkan. Suami yang merasa dihargai akan berusaha lebih keras. Suami yang terus merasa tidak pernah cukup, lama-lama berhenti mencoba.</div>
+    </li>
+  </ul>
 
-    <div class="ayat-box">
-      <div class="translation">"Dan bergaullah dengan mereka secara patut. Kemudian bila kamu tidak menyukai mereka, maka bersabarlah, karena mungkin kamu tidak menyukai sesuatu, padahal Allah menjadikan padanya kebaikan yang banyak."</div>
-      <div class="source">QS An-Nisa: 19</div>
-    </div>
+  <div class="divider" style="margin-top:38px"></div>
 
-    <ul class="items">
-      <li>
-        <div class="item-title">Memperlakukan istri dengan baik dan lembut</div>
-        <div class="item-body">Rasulullah SAW bersabda: "Sebaik-baik kalian adalah yang paling baik terhadap istrinya." (HR. Tirmidzi). Aku tidak mau menjadi suami yang baik di luar tapi kasar di dalam rumah. Perlakuan baikku terhadap kamu seharusnya bukan pertunjukan, tapi kebiasaan yang kamu rasakan setiap hari.</div>
-      </li>
-      <li>
-        <div class="item-title">Memberi nafkah dengan sungguh-sungguh</div>
-        <div class="item-body">Bukan soal berapa yang aku punya sekarang, tapi soal apakah aku serius menjaga amanah ini. Nafkah bukan tentang nominalnya, tapi tentang kesungguhannya. Aku akan berusaha sesuai kemampuan terbaikku, dan aku akan jujur ketika ada masa yang berat.</div>
-        <div class="item-note">Kejujuran di saat sulit lebih aku pilih daripada kepura-puraan di saat mudah.</div>
-      </li>
-      <li>
-        <div class="item-title">Tidak menyakiti dalam bentuk apa pun</div>
-        <div class="item-body">Tidak dengan tangan. Tidak dengan kata-kata yang tajam. Tidak dengan diam yang melukai. Tidak dengan sikap yang merendahkan, bahkan ketika aku sedang lelah atau marah. Ini adalah area yang aku sadari perlu aku jaga dengan sangat serius, dan aku tidak akan pura-pura sudah sempurna di bagian ini.</div>
-        <div class="item-note">Kamu berhak atas suami yang terus berusaha keras untuk tidak menyakitimu, bahkan di momen yang paling melelahkan sekalipun.</div>
-      </li>
-      <li>
-        <div class="item-title">Membimbing dalam agama</div>
-        <div class="item-body">Bukan berarti aku yang paling alim atau paling tahu segalanya. Tapi aku ingin kita belajar bersama, mengingatkan satu sama lain, dan berjalan ke arah yang sama dalam hal yang paling penting ini. Suami yang baik bukan yang selalu lebih tahu, tapi yang tidak mau jalannya berpisah dari istrinya di hadapan Allah.</div>
-      </li>
-      <li>
-        <div class="item-title">Memenuhi kebutuhan batin istri juga</div>
-        <div class="item-body">Ini hakmu, Hasna. Bukan hanya hal yang aku butuhkan. Kamu juga berhak untuk diprioritaskan, dicintai dengan sungguh-sungguh, dan diperlakukan bukan seperti kewajiban yang harus diselesaikan lalu dilupakan.</div>
-      </li>
-      <li>
-        <div class="item-title">Menjaga martabat dan kehormatan istri</div>
-        <div class="item-body">Kamu bukan milikku, Hasna. Kamu adalah amanah dari Allah yang harus aku jaga. Aku tidak akan merendahkanmu di depan orang lain. Aku tidak akan menjadikanmu bahan cerita. Kalau ada masalah antara kita, kita selesaikan berdua, bukan masing-masing cari pihak ketiga.</div>
-      </li>
-    </ul>
+  <span class="part-label reveal">bagian kedua</span>
+  <h3 class="part-title reveal">Kewajiban Suami terhadap Istri</h3>
+  <p class="part-intro reveal">Bagian ini adalah tanggung jawabku, Hasna. Aku tulis ini bukan untuk terlihat baik di depanmu, tapi supaya kamu tahu dengan jelas apa yang berhak kamu tuntut dariku.</p>
+
+  <div class="ayat reveal">
+    <p class="tr">"Dan bergaullah dengan mereka secara patut. Kemudian bila kamu tidak menyukai mereka, maka bersabarlah, karena mungkin kamu tidak menyukai sesuatu, padahal Allah menjadikan padanya kebaikan yang banyak."</p>
+    <span class="src">QS An-Nisa: 19</span>
   </div>
 
-  <!-- COMMITMENT BOX -->
-  <div class="commitment-box">
-    <h2>Hal yang Ingin Aku Sampaikan Secara Jujur</h2>
+  <ul class="items">
+    <li class="reveal">
+      <div class="i-title">Memperlakukan istri dengan baik dan lembut</div>
+      <div class="i-body">Rasulullah SAW bersabda: "Sebaik-baik kalian adalah yang paling baik terhadap istrinya." (HR. Tirmidzi). Aku tidak mau menjadi suami yang baik di luar tapi kasar di dalam rumah. Perlakuan baikku terhadap kamu seharusnya bukan pertunjukan, tapi kebiasaan yang kamu rasakan setiap hari.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Memberi nafkah dengan sungguh-sungguh</div>
+      <div class="i-body">Bukan soal berapa yang aku punya sekarang, tapi soal apakah aku serius menjaga amanah ini. Nafkah bukan tentang nominalnya, tapi tentang kesungguhannya. Aku akan berusaha sesuai kemampuan terbaikku, dan aku akan jujur ketika ada masa yang berat.</div>
+      <div class="i-note">Kejujuran di saat sulit lebih aku pilih daripada kepura-puraan di saat mudah.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Tidak menyakiti dalam bentuk apa pun</div>
+      <div class="i-body">Tidak dengan tangan. Tidak dengan kata-kata yang tajam. Tidak dengan diam yang melukai. Tidak dengan sikap yang merendahkan, bahkan ketika aku sedang lelah atau marah. Ini adalah area yang aku sadari perlu aku jaga dengan sangat serius, dan aku tidak akan pura-pura sudah sempurna di bagian ini.</div>
+      <div class="i-note">Kamu berhak atas suami yang terus berusaha keras untuk tidak menyakitimu, bahkan di momen yang paling melelahkan sekalipun.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Membimbing dalam agama</div>
+      <div class="i-body">Bukan berarti aku yang paling alim atau paling tahu segalanya. Tapi aku ingin kita belajar bersama, mengingatkan satu sama lain, dan berjalan ke arah yang sama dalam hal yang paling penting ini. Suami yang baik bukan yang selalu lebih tahu, tapi yang tidak mau jalannya berpisah dari istrinya di hadapan Allah.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Memenuhi kebutuhan batin istri juga</div>
+      <div class="i-body">Ini hakmu, Hasna. Bukan hanya hal yang aku butuhkan. Kamu juga berhak untuk diprioritaskan, dicintai dengan sungguh-sungguh, dan diperlakukan bukan seperti kewajiban yang harus diselesaikan lalu dilupakan.</div>
+    </li>
+    <li class="reveal">
+      <div class="i-title">Menjaga martabat dan kehormatan istri</div>
+      <div class="i-body">Kamu bukan milikku, Hasna. Kamu adalah amanah dari Allah yang harus aku jaga. Aku tidak akan merendahkanmu di depan orang lain. Aku tidak akan menjadikanmu bahan cerita. Kalau ada masalah antara kita, kita selesaikan berdua.</div>
+    </li>
+  </ul>
 
+  <div class="commit-box reveal">
+    <h3>Hal yang Ingin Aku Sampaikan Secara Jujur</h3>
     <p>Hasna, sebelum aku bicara soal janji, aku ingin bicara soal sesuatu yang lebih berat dari janji itu sendiri: kekuranganku.</p>
-
     <p>Kamu pernah mengungkapkan kekhawatiranmu soal temperamenku. Dan aku mendengarnya, bukan sebagai serangan yang perlu aku tangkis, tapi sebagai sesuatu yang benar-benar perlu aku kerjakan. Orang yang tidak mau mengakui kekurangannya sendiri tidak siap untuk membangun rumah tangga yang sehat.</p>
-
     <p>Jadi ini yang ingin aku komitmenkan, dengan sadar dan sungguh-sungguh:</p>
-
     <ul class="vow-list">
       <li>Aku akan mendengarkan kamu sebelum bereaksi, bahkan di momen yang paling memicuku sekalipun.</li>
       <li>Aku akan belajar mengatur emosi. Bukan menahan sampai meledak, tapi memproses dengan cara yang tidak merusak.</li>
@@ -396,33 +628,449 @@
       <li>Aku akan menjadi sosok yang aman untuk Hazela dan untuk kamu. Karena rumah yang aku bangun harus menjadi tempat yang paling aman untuk kalian pulang.</li>
       <li>Aku tidak berjanji sempurna. Tapi aku berjanji untuk tidak berhenti mencoba menjadi lebih baik.</li>
     </ul>
-
-    <p class="commitment-note">Jika nanti aku jatuh dari janji-janji ini, aku minta kamu ingatkan aku. Bukan dengan diam, dan bukan dengan cara yang menyakitkan. Tapi dengan cara yang membuat kita tetap bisa berjalan bersama.</p>
+    <p class="commit-note">Jika nanti aku jatuh dari janji-janji ini, aku minta kamu ingatkan aku. Bukan dengan diam, dan bukan dengan cara yang menyakitkan. Tapi dengan cara yang membuat kita tetap bisa berjalan bersama.</p>
   </div>
 
-  <!-- CLOSING -->
-  <div class="closing">
-    <div class="ayat-box" style="text-align:left; margin-bottom: 44px;">
-      <div class="translation">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang."</div>
-      <div class="source">QS Ar-Rum: 21</div>
+  <div class="surat-close reveal">
+    <div class="ayat" style="text-align:left;margin-bottom:32px">
+      <p class="tr">"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu cenderung dan merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang."</p>
+      <span class="src">QS Ar-Rum: 21</span>
     </div>
-
-    <div class="closing-text">
+    <div class="close-text">
       Hasna,<br><br>
       Rumah tangga dalam Islam bukan tentang siapa yang lebih tinggi,<br>
       siapa yang lebih bisa, atau siapa yang paling benar.<br><br>
       Ini tentang dua orang yang memilih untuk tumbuh bersama,<br>
       sabar bersama, dan pulang kepada Allah bersama.<br><br>
       Aku tidak menjanjikan hidup tanpa masalah.<br>
-      Tapi aku berjanji untuk tidak pergi ketika masalah itu datang.<br><br>
-      Semoga Allah meridhai niat kita, dan menjadikan pernikahan kita<br>
-      sebagai salah satu kebaikan yang kita bawa pulang.
+      Tapi aku berjanji untuk tidak pergi ketika masalah itu datang.
+    </div>
+    <div class="sig-label">dengan niat yang jujur,</div>
+    <div class="sig-name">Daffa</div>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ========== CERITA ========== -->
+<div class="sec sec-mid" id="cerita">
+  <span class="eyebrow reveal">perjalanan kita</span>
+  <h2 class="sec-title reveal">Cerita yang <em>Mempertemukan Kita</em></h2>
+  <p class="sec-intro reveal">Setiap pertemuan yang terasa kebetulan, sebenarnya sudah direncanakan jauh sebelum kita lahir.</p>
+  <div class="divider"></div>
+
+  <div class="timeline">
+    <!-- ============================================================
+         EDIT CERITA DI SINI — ganti teks di dalam .tl-date, 
+         .tl-title, dan .tl-body sesuai kisah kalian yang sebenarnya
+         ============================================================ -->
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">[Ganti: bulan & tahun]</div>
+      <div class="tl-title">Pertemuan Pertama</div>
+      <div class="tl-body">Tulis di sini bagaimana kamu dan Hasna pertama kali bertemu. Rasanya seperti apa, di mana, dan apa yang kamu ingat dari momen itu.</div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">[Ganti: bulan & tahun]</div>
+      <div class="tl-title">Mulai Saling Mengenal</div>
+      <div class="tl-body">Momen ketika kamu mulai sadar bahwa percakapan dengan orang ini terasa berbeda dari yang lain. Ceritakan bagaimana itu terjadi.</div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date">[Ganti: bulan & tahun]</div>
+      <div class="tl-title">Menuju yang Lebih Serius</div>
+      <div class="tl-body">Titik di mana arah hubungan ini menjadi jelas. Tulis tentang keputusan untuk melangkah lebih jauh dan apa yang membuatmu yakin.</div>
+    </div>
+    <div class="tl-item reveal">
+      <div class="tl-dot"></div>
+      <div class="tl-date" id="tl-lamaran-date">Lamaran — [Isi tanggal]</div>
+      <div class="tl-title">Hari Lamaran</div>
+      <div class="tl-body">Hari di mana dua keluarga bertemu, dan niat ini disampaikan secara resmi. Semoga Allah meridhainya dan menjadikannya awal dari sesuatu yang indah.</div>
+    </div>
+    <div class="tl-item reveal" style="opacity:0.42">
+      <div class="tl-dot" style="border-style:dashed"></div>
+      <div class="tl-date">Segera, insyaAllah</div>
+      <div class="tl-title" style="font-style:italic">Pernikahan</div>
+      <div class="tl-body">Bab yang paling indah yang belum ditulis. Kita tunggu bersama.</div>
+    </div>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ========== ACARA ========== -->
+<div class="sec" id="acara">
+  <span class="eyebrow reveal">tandai tanggalnya</span>
+  <h2 class="sec-title reveal">Detail <em>Acara</em></h2>
+  <div class="divider"></div>
+
+  <div class="acara-grid">
+    <!-- ============================================================
+         EDIT DETAIL LAMARAN DI SINI
+         Ganti semua teks [dalam kurung siku]
+         ============================================================ -->
+    <div class="acara-card reveal">
+      <span class="acara-tag">Acara Pertama</span>
+      <div class="acara-title">Lamaran</div>
+      <div class="acara-rows">
+        <div class="acara-row">
+          <span class="acara-icon">◈</span>
+          <div class="acara-info">
+            <strong>Hari &amp; Tanggal</strong>
+            [Ganti dengan tanggal lamaran]
+          </div>
+        </div>
+        <div class="acara-row">
+          <span class="acara-icon">◈</span>
+          <div class="acara-info">
+            <strong>Waktu</strong>
+            [Ganti dengan jam mulai]
+          </div>
+        </div>
+        <div class="acara-row">
+          <span class="acara-icon">◈</span>
+          <div class="acara-info">
+            <strong>Lokasi</strong>
+            [Ganti dengan nama lokasi &amp; alamat]
+          </div>
+        </div>
+      </div>
+      <!-- Ganti href dengan link Google Maps lokasi lamaran -->
+      <a href="#" class="maps-btn" id="maps-lamaran" target="_blank">Lihat di Maps</a>
     </div>
 
-    <div class="signature">dengan niat yang jujur,</div>
-    <div class="name">Daffa</div>
+    <div class="acara-card tbd reveal">
+      <span class="acara-tag">Acara Kedua</span>
+      <div class="acara-title">Pernikahan</div>
+      <div class="acara-rows">
+        <div class="acara-row">
+          <span class="acara-icon">◈</span>
+          <div class="acara-info">
+            <strong>Hari &amp; Tanggal</strong>
+            InsyaAllah, segera diumumkan
+          </div>
+        </div>
+        <div class="acara-row">
+          <span class="acara-icon">◈</span>
+          <div class="acara-info">
+            <strong>Waktu</strong>
+            Akan diperbarui
+          </div>
+        </div>
+        <div class="acara-row">
+          <span class="acara-icon">◈</span>
+          <div class="acara-info">
+            <strong>Lokasi</strong>
+            Akan diperbarui
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ========== GALERI ========== -->
+<div class="sec sec-wide" id="galeri">
+  <span class="eyebrow reveal">momen kita</span>
+  <h2 class="sec-title reveal"><em>Galeri</em> Foto</h2>
+  <p class="sec-intro reveal">Setiap foto menyimpan cerita yang tidak bisa dijelaskan hanya dengan kata-kata.</p>
+  <div class="divider"></div>
+
+  <div class="galeri-grid">
+    <!--
+      CARA MENAMBAH FOTO:
+      Ganti seluruh <div class="galeri-ph">...</div> dengan:
+      <img src="URL_FOTO" alt="keterangan" loading="lazy">
+      di dalam .galeri-item masing-masing.
+      Bisa pakai link foto dari Google Photos, Cloudinary, dll.
+    -->
+    <div class="galeri-item reveal"><div class="galeri-ph"><span>✦</span><p>Tambah foto</p></div></div>
+    <div class="galeri-item reveal"><div class="galeri-ph"><span>✦</span><p>Tambah foto</p></div></div>
+    <div class="galeri-item reveal"><div class="galeri-ph"><span>✦</span><p>Tambah foto</p></div></div>
+    <div class="galeri-item reveal"><div class="galeri-ph"><span>✦</span><p>Tambah foto</p></div></div>
+    <div class="galeri-item reveal"><div class="galeri-ph"><span>✦</span><p>Tambah foto</p></div></div>
+    <div class="galeri-item reveal"><div class="galeri-ph"><span>✦</span><p>Tambah foto</p></div></div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <img src="" id="lb-img" alt="">
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ========== RSVP ========== -->
+<div class="sec sec-narrow" id="rsvp">
+  <span class="eyebrow reveal">konfirmasi kehadiran</span>
+  <h2 class="sec-title reveal">RSVP</h2>
+  <p class="sec-intro reveal">
+    Kehadiranmu adalah bagian dari kebahagiaan kami.
+    <!-- Ganti teks di bawah dengan batas tanggal RSVP -->
+    Mohon konfirmasi sebelum <strong style="color:var(--gold-pl)">[Isi batas tanggal]</strong>.
+  </p>
+  <div class="divider"></div>
+
+  <form onsubmit="submitRSVP(event)" class="reveal">
+    <div class="form-group">
+      <label for="r-nama">Nama Lengkap</label>
+      <input type="text" id="r-nama" name="nama" placeholder="Nama kamu" required>
+    </div>
+    <div class="form-group">
+      <label for="r-hadir">Konfirmasi Kehadiran</label>
+      <select id="r-hadir" name="hadir" required>
+        <option value="">Pilih...</option>
+        <option value="hadir">Insyaallah hadir</option>
+        <option value="tidak">Mohon maaf, belum bisa hadir</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="r-jml">Jumlah Tamu (termasuk kamu)</label>
+      <select id="r-jml" name="jumlah">
+        <option value="1">1 orang</option>
+        <option value="2">2 orang</option>
+        <option value="3">3 orang</option>
+        <option value="4">4 orang</option>
+        <option value="5+">5 orang atau lebih</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="r-pesan">Pesan (opsional)</label>
+      <textarea id="r-pesan" name="pesan" placeholder="Titip pesan untuk pengantin..."></textarea>
+    </div>
+    <button type="submit" class="submit-btn rsvp-btn">Kirim Konfirmasi</button>
+  </form>
+</div>
+
+<div class="ornament">✦ ✦ ✦</div>
+
+<!-- ========== BUKU TAMU ========== -->
+<div class="sec" id="tamu">
+  <span class="eyebrow reveal">doa &amp; ucapan</span>
+  <h2 class="sec-title reveal">Buku <em>Tamu</em></h2>
+  <p class="sec-intro reveal">Doa terbaik dari orang-orang yang kamu cintai adalah bekal paling berharga.</p>
+  <div class="divider"></div>
+
+  <div class="wish-form reveal">
+    <form onsubmit="submitWish(event)">
+      <div class="form-group">
+        <label for="w-nama">Nama Kamu</label>
+        <input type="text" id="w-nama" name="nama" placeholder="Nama kamu" required>
+      </div>
+      <div class="form-group">
+        <label for="w-pesan">Doa &amp; Ucapan</label>
+        <textarea id="w-pesan" name="pesan" placeholder="Tuliskan doa terbaikmu untuk Daffa & Hasna..." required style="height:120px"></textarea>
+      </div>
+      <button type="submit" class="submit-btn wish-btn">Kirim Doa</button>
+    </form>
   </div>
 
+  <div id="wishes-list">
+    <p class="no-wishes">Memuat doa-doa...</p>
+  </div>
 </div>
+
+<!-- FOOTER -->
+<footer>
+  <div style="font-size:13px;color:var(--gold);letter-spacing:10px;margin-bottom:20px;opacity:.4">✦ ✦ ✦</div>
+  <div class="footer-names">Daffa &amp; Hasna Hanifah</div>
+  <div class="footer-ayat">"Dan dijadikan-Nya di antaramu rasa kasih dan sayang." — QS Ar-Rum: 21</div>
+  <div class="footer-doa">Semoga Allah meridhai dan memberkahi perjalanan ini.</div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<!-- ========== FIREBASE ========== -->
+<script type="module">
+import { initializeApp }    from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import { getDatabase, ref, push, onValue, serverTimestamp }
+                             from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+
+// ============================================================
+// GANTI INI DENGAN FIREBASE CONFIG KAMU
+// Buat project baru di console.firebase.google.com
+// Project Settings > Your apps > Web > copy firebaseConfig
+// ============================================================
+const firebaseConfig = {
+  apiKey:            "YOUR_API_KEY",
+  authDomain:        "YOUR_PROJECT.firebaseapp.com",
+  databaseURL:       "https://YOUR_PROJECT-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:         "YOUR_PROJECT",
+  storageBucket:     "YOUR_PROJECT.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId:             "YOUR_APP_ID"
+};
+// ============================================================
+
+let db = null;
+
+try {
+  const app = initializeApp(firebaseConfig);
+  db = getDatabase(app);
+
+  // Load doa realtime
+  onValue(ref(db, 'wishes'), (snap) => {
+    const el = document.getElementById('wishes-list');
+    if (!el) return;
+    const list = [];
+    snap.forEach(c => list.unshift(c.val()));
+    if (!list.length) {
+      el.innerHTML = '<p class="no-wishes">Jadilah yang pertama memberikan doa.</p>';
+      return;
+    }
+    el.innerHTML = list.map(w => `
+      <div class="wish-card">
+        <div class="wish-name">${esc(w.nama)}</div>
+        <div class="wish-msg">${esc(w.pesan)}</div>
+      </div>`).join('');
+  });
+
+} catch(e) {
+  document.getElementById('wishes-list').innerHTML =
+    '<p class="no-wishes">Isi Firebase config dulu ya.</p>';
+}
+
+function esc(t) {
+  const d = document.createElement('div');
+  d.appendChild(document.createTextNode(t || ''));
+  return d.innerHTML;
+}
+
+async function sendForm(path, data, btn, label, msg) {
+  if (!db) { showToast('Firebase belum dikonfigurasi.', true); return; }
+  try {
+    btn.textContent = 'Mengirim...'; btn.disabled = true;
+    await push(ref(db, path), { ...data, timestamp: serverTimestamp() });
+    showToast(msg);
+    btn.closest('form').reset();
+  } catch {
+    showToast('Gagal mengirim. Coba lagi ya.', true);
+  } finally {
+    btn.textContent = label; btn.disabled = false;
+  }
+}
+
+window.submitRSVP = function(e) {
+  e.preventDefault();
+  const f = e.target;
+  sendForm('rsvp',
+    { nama: f.nama.value, hadir: f.hadir.value, jumlah: f.jumlah.value, pesan: f.pesan.value || '' },
+    f.querySelector('.rsvp-btn'), 'Kirim Konfirmasi',
+    'Konfirmasi kehadiranmu sudah kami terima. Terima kasih!'
+  );
+};
+
+window.submitWish = function(e) {
+  e.preventDefault();
+  const f = e.target;
+  sendForm('wishes',
+    { nama: f.nama.value, pesan: f.pesan.value },
+    f.querySelector('.wish-btn'), 'Kirim Doa',
+    'Doamu sudah kami simpan. Terima kasih banyak.'
+  );
+};
+</script>
+
+<!-- ========== APP JS ========== -->
+<script>
+// ============================================================
+// EDIT 2 VARIABEL INI
+// ============================================================
+// Tanggal & jam lamaran — format: 'YYYY-MM-DDTHH:MM:SS'
+const TANGGAL_LAMARAN = '2026-12-25T10:00:00';
+
+// Link Google Maps lokasi lamaran
+const MAPS_URL = 'https://maps.google.com/?q=Lokasi+Lamaran';
+// ============================================================
+
+// Maps link
+document.getElementById('maps-lamaran').href = MAPS_URL;
+
+// ===== COUNTDOWN =====
+function tick() {
+  const diff = new Date(TANGGAL_LAMARAN) - Date.now();
+  if (diff <= 0) {
+    document.getElementById('countdown').innerHTML =
+      '<p style="font-family:\'Cormorant Garamond\',serif;font-size:22px;font-style:italic;color:var(--gold-lt)">Hari yang dinantikan telah tiba ✦</p>';
+    return;
+  }
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor(diff % 86400000 / 3600000);
+  const m = Math.floor(diff % 3600000 / 60000);
+  const s = Math.floor(diff % 60000 / 1000);
+  document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
+  document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+}
+tick(); setInterval(tick, 1000);
+
+// ===== STARS =====
+const cv = document.getElementById('stars-canvas');
+const cx = cv.getContext('2d');
+function resize() { cv.width = innerWidth; cv.height = innerHeight; }
+resize(); addEventListener('resize', resize);
+
+const stars = Array.from({length: 200}, () => ({
+  x: Math.random(), y: Math.random(),
+  r: Math.random() * 1.1 + 0.2,
+  a: Math.random(),
+  sp: (Math.random() * 0.007 + 0.001) * (Math.random() > .5 ? 1 : -1)
+}));
+
+(function draw() {
+  cx.clearRect(0, 0, cv.width, cv.height);
+  stars.forEach(s => {
+    s.a += s.sp;
+    if (s.a >= 1 || s.a <= 0) s.sp *= -1;
+    cx.beginPath();
+    cx.arc(s.x * cv.width, s.y * cv.height, s.r, 0, Math.PI * 2);
+    cx.fillStyle = `rgba(210,188,148,${Math.max(0,Math.min(1,s.a)) * 0.65})`;
+    cx.fill();
+  });
+  requestAnimationFrame(draw);
+})();
+
+// ===== NAV =====
+const navbar = document.getElementById('navbar');
+const toggle = document.getElementById('nav-toggle');
+const links  = document.getElementById('nav-links');
+
+addEventListener('scroll', () => navbar.classList.toggle('scrolled', scrollY > 60));
+toggle.addEventListener('click', () => links.classList.toggle('open'));
+window.closeNav = () => links.classList.remove('open');
+
+// ===== REVEAL =====
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ===== LIGHTBOX =====
+document.querySelectorAll('.galeri-item img').forEach(img => {
+  img.addEventListener('click', () => {
+    document.getElementById('lb-img').src = img.src;
+    document.getElementById('lightbox').classList.add('open');
+  });
+});
+window.closeLightbox = () => document.getElementById('lightbox').classList.remove('open');
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+
+// ===== TOAST =====
+window.showToast = function(msg, err = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.borderColor = err ? '#c45a5a' : 'var(--border2)';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+};
+</script>
+
 </body>
 </html>
