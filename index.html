@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-
 <style>
 :root {
   --bg:      #09080c;
@@ -23,24 +22,18 @@
   --border:  rgba(200,164,90,0.18);
   --border2: rgba(200,164,90,0.42);
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.75;
-  font-size: 15px;
-  overflow-x: hidden;
+  background: var(--bg); color: var(--text);
+  line-height: 1.75; font-size: 15px; overflow-x: hidden;
 }
-
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
 
-/* ========== NAV ========== */
+/* ===== NAV ===== */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 16px 28px;
@@ -57,9 +50,7 @@ nav.scrolled {
   font-size: 17px; font-style: italic;
   color: var(--gold-lt); letter-spacing: 0.5px;
 }
-.nav-links {
-  display: flex; gap: 26px; list-style: none;
-}
+.nav-links { display: flex; gap: 26px; list-style: none; }
 .nav-links a {
   font-size: 10.5px; letter-spacing: 2px; text-transform: uppercase;
   color: var(--dim); text-decoration: none; transition: color 0.3s;
@@ -69,14 +60,11 @@ nav.scrolled {
   display: none; flex-direction: column; gap: 5px;
   background: none; border: none; cursor: pointer; padding: 4px; z-index: 101;
 }
-.nav-toggle span {
-  width: 22px; height: 1px; background: var(--gold); display: block; transition: 0.3s;
-}
+.nav-toggle span { width: 22px; height: 1px; background: var(--gold); display: block; transition: 0.3s; }
 @media (max-width: 640px) {
   .nav-links {
-    display: none; position: fixed;
-    inset: 0; flex-direction: column;
-    align-items: center; justify-content: center;
+    display: none; position: fixed; inset: 0;
+    flex-direction: column; align-items: center; justify-content: center;
     gap: 38px; background: rgba(9,8,12,0.97); z-index: 99;
   }
   .nav-links.open { display: flex; }
@@ -84,17 +72,15 @@ nav.scrolled {
   .nav-toggle { display: flex; }
 }
 
-/* ========== HERO ========== */
+/* ===== HERO ===== */
 #hero {
   position: relative; height: 100vh; min-height: 600px;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   text-align: center; overflow: hidden;
-  max-width: 100%; padding: 0;
 }
 #stars-canvas { position: absolute; inset: 0; z-index: 0; }
 .hero-content { position: relative; z-index: 1; padding: 20px; }
-
 .hero-eyebrow {
   font-size: 15px; color: var(--gold); margin-bottom: 22px;
   opacity: 0; animation: fadeUp 1s 0.3s forwards; display: block;
@@ -130,10 +116,7 @@ nav.scrolled {
   font-size: 8.5px; letter-spacing: 2px; text-transform: uppercase;
   color: var(--dim); margin-top: 5px;
 }
-.countdown-sep {
-  font-size: 36px; color: var(--border2);
-  padding-top: 2px; line-height: 1;
-}
+.countdown-sep { font-size: 36px; color: var(--border2); padding-top: 2px; line-height: 1; }
 .scroll-line {
   position: absolute; bottom: 32px; left: 50%;
   transform: translateX(-50%); z-index: 1;
@@ -145,14 +128,11 @@ nav.scrolled {
   margin: 0 auto; animation: pulse 2s infinite;
 }
 
-/* ========== SECTIONS ========== */
-.sec {
-  padding: 100px 24px; max-width: 780px; margin: 0 auto;
-}
-.sec-wide { max-width: 900px; }
-.sec-mid  { max-width: 680px; }
-.sec-narrow { max-width: 620px; }
-
+/* ===== LAYOUT ===== */
+.sec { padding: 100px 24px; max-width: 780px; margin: 0 auto; }
+.sec-wide  { max-width: 900px; }
+.sec-mid   { max-width: 680px; }
+.sec-narrow{ max-width: 620px; }
 .eyebrow {
   font-size: 9.5px; letter-spacing: 4px; text-transform: uppercase;
   color: var(--gold); margin-bottom: 10px; display: block;
@@ -167,27 +147,21 @@ nav.scrolled {
   font-size: 14px; color: var(--dim); font-style: italic;
   margin-bottom: 36px; line-height: 1.8;
 }
-.divider {
-  width: 52px; height: 1px;
-  background: var(--border2); margin: 14px 0 38px;
-}
+.divider { width: 52px; height: 1px; background: var(--border2); margin: 14px 0 38px; }
 .ornament {
   display: block; text-align: center; color: var(--gold);
   letter-spacing: 12px; font-size: 13px;
-  margin: 0 auto; padding: 60px 0; opacity: 0.45;
-  max-width: 780px;
+  padding: 60px 0; opacity: 0.45; max-width: 780px; margin: 0 auto;
 }
 
-/* ========== SURAT ========== */
+/* ===== SURAT ===== */
 .surat-opening {
   padding: 26px 30px; border: 1px solid var(--border);
-  border-radius: 3px; background: var(--bg3);
-  margin-bottom: 46px; font-style: italic;
-  color: var(--text); font-size: 14px; line-height: 1.9;
+  border-radius: 3px; background: var(--bg3); margin-bottom: 46px;
+  font-style: italic; color: var(--text); font-size: 14px; line-height: 1.9;
 }
 .surat-opening p { margin-bottom: 14px; }
 .surat-opening p:last-child { margin-bottom: 0; }
-
 .part-label {
   font-size: 9px; letter-spacing: 4px; text-transform: uppercase;
   color: var(--gold); margin-bottom: 6px; display: block;
@@ -196,44 +170,25 @@ nav.scrolled {
   font-family: 'Cormorant Garamond', serif;
   font-size: 22px; color: var(--gold-pl); margin-bottom: 8px;
 }
-.part-intro {
-  font-size: 13.5px; font-style: italic;
-  color: var(--dim); margin-bottom: 24px;
-}
-
+.part-intro { font-size: 13.5px; font-style: italic; color: var(--dim); margin-bottom: 24px; }
 .ayat {
   background: var(--bg4); border: 1px solid var(--border);
   border-left: 2px solid var(--gold);
   padding: 18px 22px; margin-bottom: 28px; border-radius: 2px;
 }
 .ayat .tr {
-  font-size: 13.5px; color: var(--text);
-  font-style: italic; line-height: 1.85; margin-bottom: 6px;
+  font-size: 13.5px; color: var(--text); font-style: italic;
+  line-height: 1.85; margin-bottom: 6px;
 }
-.ayat .src {
-  font-size: 11px; color: var(--gold); letter-spacing: 1px;
-}
-
+.ayat .src { font-size: 11px; color: var(--gold); letter-spacing: 1px; }
 .items { list-style: none; }
-.items li {
-  padding: 20px 0; border-bottom: 1px solid rgba(200,164,90,0.1);
-}
+.items li { padding: 20px 0; border-bottom: 1px solid rgba(200,164,90,0.1); }
 .items li:last-child { border-bottom: none; }
-.i-title {
-  font-weight: 500; color: var(--gold-pl);
-  margin-bottom: 7px; font-size: 14.5px;
-}
-.i-body {
-  font-size: 13.5px; color: var(--text); line-height: 1.85;
-}
-.i-note {
-  font-size: 12.5px; color: var(--gold);
-  font-style: italic; margin-top: 6px;
-}
-
+.i-title { font-weight: 500; color: var(--gold-pl); margin-bottom: 7px; font-size: 14.5px; }
+.i-body  { font-size: 13.5px; color: var(--text); line-height: 1.85; }
+.i-note  { font-size: 12.5px; color: var(--gold); font-style: italic; margin-top: 6px; }
 .commit-box {
-  background: var(--bg3);
-  border: 1px solid var(--border2);
+  background: var(--bg3); border: 1px solid var(--border2);
   border-top: 2px solid var(--gold);
   padding: 34px 38px; border-radius: 3px; margin: 46px 0;
 }
@@ -241,37 +196,28 @@ nav.scrolled {
   font-family: 'Cormorant Garamond', serif;
   font-size: 22px; color: var(--gold-lt); margin-bottom: 16px;
 }
-.commit-box p {
-  font-size: 13.5px; line-height: 1.9;
-  color: var(--text); margin-bottom: 13px;
-}
+.commit-box p { font-size: 13.5px; line-height: 1.9; color: var(--text); margin-bottom: 13px; }
 .vow-list { list-style: none; margin: 18px 0; }
 .vow-list li {
   padding: 10px 0 10px 20px; position: relative;
   font-size: 13.5px; color: var(--text);
-  border-bottom: 1px solid rgba(200,164,90,0.08);
-  line-height: 1.8;
+  border-bottom: 1px solid rgba(200,164,90,0.08); line-height: 1.8;
 }
-.vow-list li::before {
-  content: '—'; position: absolute; left: 0; color: var(--gold);
-}
+.vow-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); }
 .vow-list li:last-child { border-bottom: none; }
 .commit-note { font-style: italic; color: var(--gold) !important; }
-
 .surat-close { text-align: center; padding: 36px 16px 0; }
 .close-text {
   font-family: 'Cormorant Garamond', serif; font-style: italic;
   font-size: 17px; color: var(--text); line-height: 2.1; margin-bottom: 28px;
 }
-.sig-label {
-  font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim);
-}
+.sig-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--dim); }
 .sig-name {
   font-family: 'Cormorant Garamond', serif;
   font-size: 26px; font-style: italic; color: var(--gold-lt); margin-top: 4px;
 }
 
-/* ========== TIMELINE ========== */
+/* ===== TIMELINE ===== */
 .timeline { position: relative; padding-left: 30px; }
 .timeline::before {
   content: ''; position: absolute; left: 6px; top: 10px; bottom: 0;
@@ -285,24 +231,13 @@ nav.scrolled {
   border: 1px solid var(--gold); background: var(--bg);
   display: flex; align-items: center; justify-content: center;
 }
-.tl-dot::after {
-  content: ''; width: 5px; height: 5px;
-  border-radius: 50%; background: var(--gold);
-}
-.tl-date {
-  font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
-  color: var(--gold); margin-bottom: 5px;
-}
-.tl-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 21px; color: var(--gold-pl); margin-bottom: 7px;
-}
-.tl-body { font-size: 13.5px; color: var(--text); line-height: 1.85; }
+.tl-dot::after { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+.tl-date { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; }
+.tl-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; color: var(--gold-pl); margin-bottom: 7px; }
+.tl-body  { font-size: 13.5px; color: var(--text); line-height: 1.85; }
 
-/* ========== ACARA ========== */
-.acara-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 18px;
-}
+/* ===== ACARA ===== */
+.acara-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
 @media (max-width: 560px) { .acara-grid { grid-template-columns: 1fr; } }
 .acara-card {
   background: var(--bg3); border: 1px solid var(--border);
@@ -314,18 +249,12 @@ nav.scrolled {
   color: var(--gold); margin-bottom: 10px; display: block;
 }
 .acara-card.tbd .acara-tag { color: var(--dim); }
-.acara-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px; color: var(--gold-pl); margin-bottom: 20px;
-}
+.acara-title { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--gold-pl); margin-bottom: 20px; }
 .acara-rows { display: flex; flex-direction: column; gap: 12px; }
-.acara-row { display: flex; gap: 12px; align-items: flex-start; }
+.acara-row  { display: flex; gap: 12px; align-items: flex-start; }
 .acara-icon { font-size: 11px; color: var(--gold); margin-top: 3px; flex-shrink: 0; }
 .acara-info { font-size: 13.5px; color: var(--text); line-height: 1.7; }
-.acara-info strong {
-  color: var(--gold-pl); display: block; font-size: 11px;
-  letter-spacing: 0.5px; margin-bottom: 2px; font-weight: 500;
-}
+.acara-info strong { color: var(--gold-pl); display: block; font-size: 11px; letter-spacing: 0.5px; margin-bottom: 2px; font-weight: 500; }
 .maps-btn {
   display: inline-block; margin-top: 18px; padding: 9px 18px;
   border: 1px solid var(--border2); border-radius: 2px;
@@ -334,43 +263,34 @@ nav.scrolled {
 }
 .maps-btn:hover { background: var(--gold); color: var(--bg); }
 
-/* ========== GALERI ========== */
-.galeri-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
-}
+/* ===== GALERI ===== */
+.galeri-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
 @media (max-width: 480px) { .galeri-grid { grid-template-columns: repeat(2, 1fr); } }
-.galeri-item {
-  aspect-ratio: 1; overflow: hidden;
-  border-radius: 2px; cursor: pointer;
-}
-.galeri-item img {
-  width: 100%; height: 100%; object-fit: cover;
-  display: block; transition: transform 0.6s ease;
-}
+.galeri-item { aspect-ratio: 1; overflow: hidden; border-radius: 2px; cursor: pointer; }
+.galeri-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s; }
 .galeri-item:hover img { transform: scale(1.05); }
 .galeri-ph {
-  width: 100%; height: 100%;
-  background: var(--bg3); border: 1px dashed var(--border2);
+  width: 100%; height: 100%; background: var(--bg3);
+  border: 1px dashed var(--border2);
   display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 7px;
 }
 .galeri-ph span { font-size: 18px; color: var(--border2); }
-.galeri-ph p { font-size: 9.5px; color: var(--dim); letter-spacing: 1px; }
-
+.galeri-ph p   { font-size: 9.5px; color: var(--dim); letter-spacing: 1px; }
 .lightbox {
   display: none; position: fixed; inset: 0;
   background: rgba(0,0,0,0.96); z-index: 200;
   align-items: center; justify-content: center;
 }
 .lightbox.open { display: flex; }
-.lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+.lightbox img  { max-width: 90vw; max-height: 90vh; object-fit: contain; }
 .lb-close {
   position: absolute; top: 20px; right: 24px;
   background: none; border: none; color: var(--gold-pl);
   font-size: 22px; cursor: pointer;
 }
 
-/* ========== FORM (RSVP + TAMU) ========== */
+/* ===== FORM ===== */
 .form-group { margin-bottom: 18px; }
 .form-group label {
   display: block; font-size: 10px; letter-spacing: 2px;
@@ -390,7 +310,6 @@ nav.scrolled {
 .form-group textarea:focus { border-color: var(--gold); }
 .form-group textarea { height: 110px; resize: vertical; }
 .form-group select option { background: var(--bg3); }
-
 .submit-btn {
   width: 100%; padding: 14px; background: transparent;
   border: 1px solid var(--gold); color: var(--gold);
@@ -401,7 +320,6 @@ nav.scrolled {
 }
 .submit-btn:hover { background: var(--gold); color: var(--bg); }
 .submit-btn:disabled { opacity: 0.45; cursor: not-allowed; }
-
 .wish-form {
   background: var(--bg3); border: 1px solid var(--border);
   padding: 30px; border-radius: 3px; margin-bottom: 40px;
@@ -411,34 +329,71 @@ nav.scrolled {
   background: var(--bg3); border: 1px solid var(--border);
   border-left: 2px solid var(--gold); padding: 18px 20px; border-radius: 3px;
 }
-.wish-name {
-  font-size: 13px; font-weight: 500; color: var(--gold-lt); margin-bottom: 6px;
-}
-.wish-msg {
-  font-size: 13.5px; color: var(--text); line-height: 1.8; font-style: italic;
-}
-.no-wishes {
-  font-size: 13px; color: var(--dim); font-style: italic;
-  text-align: center; padding: 24px 0;
-}
+.wish-name { font-size: 13px; font-weight: 500; color: var(--gold-lt); margin-bottom: 6px; }
+.wish-msg  { font-size: 13.5px; color: var(--text); line-height: 1.8; font-style: italic; }
+.no-wishes { font-size: 13px; color: var(--dim); font-style: italic; text-align: center; padding: 24px 0; }
 
-/* ========== FOOTER ========== */
+/* ===== FOOTER ===== */
 footer {
   text-align: center; padding: 60px 20px 44px;
   border-top: 1px solid var(--border);
   max-width: 780px; margin: 0 auto;
 }
-.footer-names {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 28px; font-style: italic; color: var(--gold-lt); margin-bottom: 8px;
-}
-.footer-ayat {
-  font-family: 'Cormorant Garamond', serif; font-style: italic;
-  font-size: 15px; color: var(--dim); margin-bottom: 22px; line-height: 1.7;
-}
-.footer-doa { font-size: 12px; color: var(--dim); letter-spacing: 1.5px; }
+.footer-names { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; color: var(--gold-lt); margin-bottom: 8px; }
+.footer-ayat  { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 15px; color: var(--dim); margin-bottom: 22px; line-height: 1.7; }
+.footer-doa   { font-size: 12px; color: var(--dim); letter-spacing: 1.5px; }
 
-/* ========== TOAST ========== */
+/* ===== MUSIC PLAYER ===== */
+#music-btn {
+  position: fixed; bottom: 28px; left: 22px; z-index: 150;
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(9,8,12,0.9);
+  border: 1px solid var(--border2);
+  backdrop-filter: blur(14px);
+  padding: 10px 18px 10px 12px;
+  border-radius: 40px; cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+}
+#music-btn:hover {
+  border-color: var(--gold-lt);
+  box-shadow: 0 4px 28px rgba(200,164,90,0.2);
+}
+#music-disc {
+  width: 28px; height: 28px; border-radius: 50%;
+  border: 1.5px solid var(--gold); flex-shrink: 0;
+  background: radial-gradient(circle at center, var(--bg4) 30%, var(--bg3) 100%);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; transition: 0.3s;
+}
+#music-disc::after {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold); opacity: 0.65; position: absolute;
+}
+#music-disc.playing {
+  animation: spin-disc 4s linear infinite;
+  border-color: var(--gold-lt);
+  box-shadow: 0 0 12px rgba(200,164,90,0.35);
+}
+@keyframes spin-disc { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+#music-disc .m-dot {
+  position: absolute; top: -3px; right: -3px;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--gold); border: 1.5px solid var(--bg);
+  opacity: 0; transition: opacity 0.3s;
+}
+#music-disc.playing .m-dot { opacity: 1; animation: dot-pulse 1.5s infinite; }
+@keyframes dot-pulse {
+  0%,100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.4); opacity: 0.55; }
+}
+#music-info { display: flex; flex-direction: column; gap: 1px; }
+#music-title  { font-size: 12px; font-weight: 500; color: var(--gold-pl); letter-spacing: 0.3px; line-height: 1.3; transition: color 0.3s; }
+#music-artist { font-size: 10px; color: var(--dim); letter-spacing: 0.5px; }
+#music-btn:hover #music-title { color: var(--gold-lt); }
+#yt-player { position: fixed; top: -9999px; left: -9999px; width: 0; height: 0; }
+
+/* ===== TOAST ===== */
 .toast {
   position: fixed; bottom: 28px; left: 50%;
   transform: translateX(-50%) translateY(16px);
@@ -449,22 +404,14 @@ footer {
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* ========== ANIMATIONS ========== */
+/* ===== ANIMATIONS ===== */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
-@keyframes fadeIn {
-  from { opacity: 0; } to { opacity: 1; }
-}
-@keyframes pulse {
-  0%,100% { opacity: 0.25; } 50% { opacity: 1; }
-}
-
-.reveal {
-  opacity: 0; transform: translateY(28px);
-  transition: opacity 0.75s ease, transform 0.75s ease;
-}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse  { 0%,100% { opacity: 0.25; } 50% { opacity: 1; } }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s ease, transform 0.75s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
@@ -477,17 +424,17 @@ footer {
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="nav-links">
-    <li><a href="#hero"  onclick="closeNav()">Beranda</a></li>
-    <li><a href="#surat" onclick="closeNav()">Surat</a></li>
+    <li><a href="#hero"   onclick="closeNav()">Beranda</a></li>
+    <li><a href="#surat"  onclick="closeNav()">Surat</a></li>
     <li><a href="#cerita" onclick="closeNav()">Cerita</a></li>
-    <li><a href="#acara" onclick="closeNav()">Acara</a></li>
+    <li><a href="#acara"  onclick="closeNav()">Acara</a></li>
     <li><a href="#galeri" onclick="closeNav()">Galeri</a></li>
-    <li><a href="#rsvp"  onclick="closeNav()">RSVP</a></li>
-    <li><a href="#tamu"  onclick="closeNav()">Doa &amp; Ucapan</a></li>
+    <li><a href="#rsvp"   onclick="closeNav()">RSVP</a></li>
+    <li><a href="#tamu"   onclick="closeNav()">Doa &amp; Ucapan</a></li>
   </ul>
 </nav>
 
-<!-- ========== HERO ========== -->
+<!-- ===== HERO ===== -->
 <div id="hero">
   <canvas id="stars-canvas"></canvas>
   <div class="hero-content">
@@ -526,7 +473,7 @@ footer {
 
 <div class="ornament">✦ ✦ ✦</div>
 
-<!-- ========== SURAT ========== -->
+<!-- ===== SURAT ===== -->
 <div class="sec" id="surat">
   <span class="eyebrow reveal">sebuah niat yang jujur</span>
   <h2 class="sec-title reveal">Hak &amp; Kewajiban<br><em>Suami dan Istri dalam Islam</em></h2>
@@ -652,7 +599,7 @@ footer {
 
 <div class="ornament">✦ ✦ ✦</div>
 
-<!-- ========== CERITA ========== -->
+<!-- ===== CERITA ===== -->
 <div class="sec sec-mid" id="cerita">
   <span class="eyebrow reveal">perjalanan kita</span>
   <h2 class="sec-title reveal">Cerita yang <em>Mempertemukan Kita</em></h2>
@@ -660,31 +607,27 @@ footer {
   <div class="divider"></div>
 
   <div class="timeline">
-    <!-- ============================================================
-         EDIT CERITA DI SINI — ganti teks di dalam .tl-date, 
-         .tl-title, dan .tl-body sesuai kisah kalian yang sebenarnya
-         ============================================================ -->
     <div class="tl-item reveal">
       <div class="tl-dot"></div>
-      <div class="tl-date">[Ganti: bulan & tahun]</div>
+      <div class="tl-date">[Ganti: bulan &amp; tahun]</div>
       <div class="tl-title">Pertemuan Pertama</div>
       <div class="tl-body">Tulis di sini bagaimana kamu dan Hasna pertama kali bertemu. Rasanya seperti apa, di mana, dan apa yang kamu ingat dari momen itu.</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-dot"></div>
-      <div class="tl-date">[Ganti: bulan & tahun]</div>
+      <div class="tl-date">[Ganti: bulan &amp; tahun]</div>
       <div class="tl-title">Mulai Saling Mengenal</div>
       <div class="tl-body">Momen ketika kamu mulai sadar bahwa percakapan dengan orang ini terasa berbeda dari yang lain. Ceritakan bagaimana itu terjadi.</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-dot"></div>
-      <div class="tl-date">[Ganti: bulan & tahun]</div>
+      <div class="tl-date">[Ganti: bulan &amp; tahun]</div>
       <div class="tl-title">Menuju yang Lebih Serius</div>
       <div class="tl-body">Titik di mana arah hubungan ini menjadi jelas. Tulis tentang keputusan untuk melangkah lebih jauh dan apa yang membuatmu yakin.</div>
     </div>
     <div class="tl-item reveal">
       <div class="tl-dot"></div>
-      <div class="tl-date" id="tl-lamaran-date">Lamaran — [Isi tanggal]</div>
+      <div class="tl-date">[Ganti: tanggal lamaran]</div>
       <div class="tl-title">Hari Lamaran</div>
       <div class="tl-body">Hari di mana dua keluarga bertemu, dan niat ini disampaikan secara resmi. Semoga Allah meridhainya dan menjadikannya awal dari sesuatu yang indah.</div>
     </div>
@@ -699,44 +642,30 @@ footer {
 
 <div class="ornament">✦ ✦ ✦</div>
 
-<!-- ========== ACARA ========== -->
+<!-- ===== ACARA ===== -->
 <div class="sec" id="acara">
   <span class="eyebrow reveal">tandai tanggalnya</span>
   <h2 class="sec-title reveal">Detail <em>Acara</em></h2>
   <div class="divider"></div>
 
   <div class="acara-grid">
-    <!-- ============================================================
-         EDIT DETAIL LAMARAN DI SINI
-         Ganti semua teks [dalam kurung siku]
-         ============================================================ -->
     <div class="acara-card reveal">
       <span class="acara-tag">Acara Pertama</span>
       <div class="acara-title">Lamaran</div>
       <div class="acara-rows">
         <div class="acara-row">
           <span class="acara-icon">◈</span>
-          <div class="acara-info">
-            <strong>Hari &amp; Tanggal</strong>
-            [Ganti dengan tanggal lamaran]
-          </div>
+          <div class="acara-info"><strong>Hari &amp; Tanggal</strong>[Ganti dengan tanggal lamaran]</div>
         </div>
         <div class="acara-row">
           <span class="acara-icon">◈</span>
-          <div class="acara-info">
-            <strong>Waktu</strong>
-            [Ganti dengan jam mulai]
-          </div>
+          <div class="acara-info"><strong>Waktu</strong>[Ganti dengan jam mulai]</div>
         </div>
         <div class="acara-row">
           <span class="acara-icon">◈</span>
-          <div class="acara-info">
-            <strong>Lokasi</strong>
-            [Ganti dengan nama lokasi &amp; alamat]
-          </div>
+          <div class="acara-info"><strong>Lokasi</strong>[Ganti dengan nama lokasi &amp; alamat]</div>
         </div>
       </div>
-      <!-- Ganti href dengan link Google Maps lokasi lamaran -->
       <a href="#" class="maps-btn" id="maps-lamaran" target="_blank">Lihat di Maps</a>
     </div>
 
@@ -746,24 +675,15 @@ footer {
       <div class="acara-rows">
         <div class="acara-row">
           <span class="acara-icon">◈</span>
-          <div class="acara-info">
-            <strong>Hari &amp; Tanggal</strong>
-            InsyaAllah, segera diumumkan
-          </div>
+          <div class="acara-info"><strong>Hari &amp; Tanggal</strong>InsyaAllah, segera diumumkan</div>
         </div>
         <div class="acara-row">
           <span class="acara-icon">◈</span>
-          <div class="acara-info">
-            <strong>Waktu</strong>
-            Akan diperbarui
-          </div>
+          <div class="acara-info"><strong>Waktu</strong>Akan diperbarui</div>
         </div>
         <div class="acara-row">
           <span class="acara-icon">◈</span>
-          <div class="acara-info">
-            <strong>Lokasi</strong>
-            Akan diperbarui
-          </div>
+          <div class="acara-info"><strong>Lokasi</strong>Akan diperbarui</div>
         </div>
       </div>
     </div>
@@ -772,7 +692,7 @@ footer {
 
 <div class="ornament">✦ ✦ ✦</div>
 
-<!-- ========== GALERI ========== -->
+<!-- ===== GALERI ===== -->
 <div class="sec sec-wide" id="galeri">
   <span class="eyebrow reveal">momen kita</span>
   <h2 class="sec-title reveal"><em>Galeri</em> Foto</h2>
@@ -781,11 +701,10 @@ footer {
 
   <div class="galeri-grid">
     <!--
-      CARA MENAMBAH FOTO:
-      Ganti seluruh <div class="galeri-ph">...</div> dengan:
+      CARA TAMBAH FOTO:
+      Ganti <div class="galeri-ph">...</div> dengan:
       <img src="URL_FOTO" alt="keterangan" loading="lazy">
-      di dalam .galeri-item masing-masing.
-      Bisa pakai link foto dari Google Photos, Cloudinary, dll.
+      di dalam masing-masing .galeri-item
     -->
     <div class="galeri-item reveal"><div class="galeri-ph"><span>✦</span><p>Tambah foto</p></div></div>
     <div class="galeri-item reveal"><div class="galeri-ph"><span>✦</span><p>Tambah foto</p></div></div>
@@ -796,7 +715,6 @@ footer {
   </div>
 </div>
 
-<!-- Lightbox -->
 <div class="lightbox" id="lightbox">
   <button class="lb-close" onclick="closeLightbox()">✕</button>
   <img src="" id="lb-img" alt="">
@@ -804,14 +722,13 @@ footer {
 
 <div class="ornament">✦ ✦ ✦</div>
 
-<!-- ========== RSVP ========== -->
+<!-- ===== RSVP ===== -->
 <div class="sec sec-narrow" id="rsvp">
   <span class="eyebrow reveal">konfirmasi kehadiran</span>
   <h2 class="sec-title reveal">RSVP</h2>
   <p class="sec-intro reveal">
-    Kehadiranmu adalah bagian dari kebahagiaan kami.
-    <!-- Ganti teks di bawah dengan batas tanggal RSVP -->
-    Mohon konfirmasi sebelum <strong style="color:var(--gold-pl)">[Isi batas tanggal]</strong>.
+    Kehadiranmu adalah bagian dari kebahagiaan kami. Mohon konfirmasi sebelum
+    <strong style="color:var(--gold-pl)">[Isi batas tanggal RSVP]</strong>.
   </p>
   <div class="divider"></div>
 
@@ -848,7 +765,7 @@ footer {
 
 <div class="ornament">✦ ✦ ✦</div>
 
-<!-- ========== BUKU TAMU ========== -->
+<!-- ===== BUKU TAMU ===== -->
 <div class="sec" id="tamu">
   <span class="eyebrow reveal">doa &amp; ucapan</span>
   <h2 class="sec-title reveal">Buku <em>Tamu</em></h2>
@@ -868,7 +785,6 @@ footer {
       <button type="submit" class="submit-btn wish-btn">Kirim Doa</button>
     </form>
   </div>
-
   <div id="wishes-list">
     <p class="no-wishes">Memuat doa-doa...</p>
   </div>
@@ -882,18 +798,32 @@ footer {
   <div class="footer-doa">Semoga Allah meridhai dan memberkahi perjalanan ini.</div>
 </footer>
 
+<!-- MUSIC PLAYER -->
+<div id="music-btn" onclick="toggleMusic()">
+  <div id="music-disc">
+    <div class="m-dot"></div>
+  </div>
+  <div id="music-info">
+    <span id="music-title">Akad</span>
+    <span id="music-artist">Payung Teduh</span>
+  </div>
+</div>
+<div id="yt-player"></div>
+
 <div class="toast" id="toast"></div>
 
-<!-- ========== FIREBASE ========== -->
+<!-- YouTube IFrame API -->
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<!-- Firebase -->
 <script type="module">
-import { initializeApp }    from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
 import { getDatabase, ref, push, onValue, serverTimestamp }
-                             from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
+  from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js';
 
 // ============================================================
-// GANTI INI DENGAN FIREBASE CONFIG KAMU
-// Buat project baru di console.firebase.google.com
-// Project Settings > Your apps > Web > copy firebaseConfig
+// GANTI DENGAN FIREBASE CONFIG KAMU
+// console.firebase.google.com > Project Settings > Your apps
 // ============================================================
 const firebaseConfig = {
   apiKey:            "YOUR_API_KEY",
@@ -909,11 +839,9 @@ const firebaseConfig = {
 let db = null;
 
 try {
-  const app = initializeApp(firebaseConfig);
-  db = getDatabase(app);
+  db = getDatabase(initializeApp(firebaseConfig));
 
-  // Load doa realtime
-  onValue(ref(db, 'wishes'), (snap) => {
+  onValue(ref(db, 'wishes'), snap => {
     const el = document.getElementById('wishes-list');
     if (!el) return;
     const list = [];
@@ -922,14 +850,15 @@ try {
       el.innerHTML = '<p class="no-wishes">Jadilah yang pertama memberikan doa.</p>';
       return;
     }
-    el.innerHTML = list.map(w => `
-      <div class="wish-card">
+    el.innerHTML = list.map(w =>
+      `<div class="wish-card">
         <div class="wish-name">${esc(w.nama)}</div>
         <div class="wish-msg">${esc(w.pesan)}</div>
-      </div>`).join('');
+      </div>`
+    ).join('');
   });
 
-} catch(e) {
+} catch {
   document.getElementById('wishes-list').innerHTML =
     '<p class="no-wishes">Isi Firebase config dulu ya.</p>';
 }
@@ -940,34 +869,31 @@ function esc(t) {
   return d.innerHTML;
 }
 
-async function sendForm(path, data, btn, label, msg) {
+async function send(path, data, btn, label, msg) {
   if (!db) { showToast('Firebase belum dikonfigurasi.', true); return; }
   try {
     btn.textContent = 'Mengirim...'; btn.disabled = true;
     await push(ref(db, path), { ...data, timestamp: serverTimestamp() });
     showToast(msg);
     btn.closest('form').reset();
-  } catch {
-    showToast('Gagal mengirim. Coba lagi ya.', true);
-  } finally {
-    btn.textContent = label; btn.disabled = false;
-  }
+  } catch { showToast('Gagal mengirim. Coba lagi ya.', true); }
+  finally  { btn.textContent = label; btn.disabled = false; }
 }
 
-window.submitRSVP = function(e) {
+window.submitRSVP = e => {
   e.preventDefault();
   const f = e.target;
-  sendForm('rsvp',
+  send('rsvp',
     { nama: f.nama.value, hadir: f.hadir.value, jumlah: f.jumlah.value, pesan: f.pesan.value || '' },
     f.querySelector('.rsvp-btn'), 'Kirim Konfirmasi',
     'Konfirmasi kehadiranmu sudah kami terima. Terima kasih!'
   );
 };
 
-window.submitWish = function(e) {
+window.submitWish = e => {
   e.preventDefault();
   const f = e.target;
-  sendForm('wishes',
+  send('wishes',
     { nama: f.nama.value, pesan: f.pesan.value },
     f.querySelector('.wish-btn'), 'Kirim Doa',
     'Doamu sudah kami simpan. Terima kasih banyak.'
@@ -975,19 +901,23 @@ window.submitWish = function(e) {
 };
 </script>
 
-<!-- ========== APP JS ========== -->
+<!-- App JS -->
 <script>
 // ============================================================
 // EDIT 2 VARIABEL INI
 // ============================================================
-// Tanggal & jam lamaran — format: 'YYYY-MM-DDTHH:MM:SS'
+// Format tanggal: 'YYYY-MM-DDTHH:MM:SS'
 const TANGGAL_LAMARAN = '2026-12-25T10:00:00';
 
-// Link Google Maps lokasi lamaran
+// Link Google Maps lokasi lamaran kamu
 const MAPS_URL = 'https://maps.google.com/?q=Lokasi+Lamaran';
+
+// ID video YouTube Payung Teduh - Akad
+// Buka youtube.com → search → lihat URL: ?v=XXXXX → isi XXXXX di bawah
+const YT_VIDEO_ID = 'GANTI_VIDEO_ID_DI_SINI';
 // ============================================================
 
-// Maps link
+// Maps
 document.getElementById('maps-lamaran').href = MAPS_URL;
 
 // ===== COUNTDOWN =====
@@ -1000,8 +930,8 @@ function tick() {
   }
   const d = Math.floor(diff / 86400000);
   const h = Math.floor(diff % 86400000 / 3600000);
-  const m = Math.floor(diff % 3600000 / 60000);
-  const s = Math.floor(diff % 60000 / 1000);
+  const m = Math.floor(diff % 3600000  / 60000);
+  const s = Math.floor(diff % 60000    / 1000);
   document.getElementById('cd-d').textContent = String(d).padStart(2,'0');
   document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
   document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
@@ -1029,7 +959,7 @@ const stars = Array.from({length: 200}, () => ({
     if (s.a >= 1 || s.a <= 0) s.sp *= -1;
     cx.beginPath();
     cx.arc(s.x * cv.width, s.y * cv.height, s.r, 0, Math.PI * 2);
-    cx.fillStyle = `rgba(210,188,148,${Math.max(0,Math.min(1,s.a)) * 0.65})`;
+    cx.fillStyle = `rgba(210,188,148,${Math.max(0, Math.min(1, s.a)) * 0.65})`;
     cx.fill();
   });
   requestAnimationFrame(draw);
@@ -1039,14 +969,15 @@ const stars = Array.from({length: 200}, () => ({
 const navbar = document.getElementById('navbar');
 const toggle = document.getElementById('nav-toggle');
 const links  = document.getElementById('nav-links');
-
 addEventListener('scroll', () => navbar.classList.toggle('scrolled', scrollY > 60));
 toggle.addEventListener('click', () => links.classList.toggle('open'));
 window.closeNav = () => links.classList.remove('open');
 
 // ===== REVEAL =====
 const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
 }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
@@ -1069,6 +1000,31 @@ window.showToast = function(msg, err = false) {
   t.style.borderColor = err ? '#c45a5a' : 'var(--border2)';
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 3500);
+};
+
+// ===== MUSIC PLAYER =====
+let ytPlayer  = null;
+let isPlaying = false;
+
+window.onYouTubeIframeAPIReady = function() {
+  ytPlayer = new YT.Player('yt-player', {
+    videoId: YT_VIDEO_ID,
+    playerVars: { autoplay: 0, loop: 1, playlist: YT_VIDEO_ID, controls: 0, disablekb: 1 },
+    events: {
+      onStateChange: function(e) {
+        isPlaying = e.data === YT.PlayerState.PLAYING;
+        const disc  = document.getElementById('music-disc');
+        const title = document.getElementById('music-title');
+        disc.classList.toggle('playing', isPlaying);
+        title.style.color = isPlaying ? 'var(--gold-lt)' : 'var(--gold-pl)';
+      }
+    }
+  });
+};
+
+window.toggleMusic = function() {
+  if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') return;
+  isPlaying ? ytPlayer.pauseVideo() : ytPlayer.playVideo();
 };
 </script>
 
